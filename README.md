@@ -105,7 +105,7 @@ ReactDOM.render(
 
 > Les fonctions pures ou stateless servent à créer des composants simplement, sans cycle de vie et sans state.
 > Par défaut il est recommandé d'essayer d'écrire chaque composant sous forme de fonction pure.
-> Voir la doc de [react](https://facebook.github.io/react/docs/reusable-components.html#stateless-function)s
+> Voir la doc de [react](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions)
 
 ## Brancher un routeur
 
