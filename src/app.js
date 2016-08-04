@@ -13,7 +13,7 @@ const StateDisplayer = connectToStore(s => s)(props => <pre><code>{JSON.stringif
 const App = props =>
   <div style={{color: 'blue'}}>
     <DevTools />
-    <h1>Bienvenue dans ce superbe tutoriel {props.name} </h1>
+    <h1>Bienvenue dans ce superbe tutoriel dd{props.name} </h1>
     {/* On récupère les définitions dans les props*/}
     {props.children}
     <StateDisplayer/ >

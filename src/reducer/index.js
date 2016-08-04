@@ -4,7 +4,7 @@
 import {combineReducers} from 'redux';
 import user from './user-reducer';
 import finance from './finance-reducer';
-import customReducer from './custom-reducer'
+import customReducer from './custom-reducer';
 //import {userfinanceReducer, financeUserReducer} from './user-finance-reducer'
 
 export default combineReducers({
