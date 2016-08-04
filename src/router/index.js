@@ -9,17 +9,22 @@ import User from '../views/user/user-form';
 import UserFinance from '../views/user/user-finance-form';
 import UserSelect from '../views/user/user-form-select-checkbox';
 import {hashHistory } from 'react-router';
+const paramExtractor = Component => props => <Component id={props.params.id} />
+const UserWithParam = paramExtractor(User);
+const UserFinanceWithParam = paramExtractor(UserFinance);
+const UserListWithParam = paramExtractor(UserList);
+const UserSelectWithParam = paramExtractor(UserSelect);
+const router = <Router history={hashHistory}  key='router'>
+  <Route path='/' component={App} key='mainRoute' >
+    <IndexRoute component={Home}/>
+    {/* Les :id sert à fournir un paramètre à l'url on extrait les paramètres d'url via la props params*/}
+    <Route path='user/:id' component={UserWithParam} />
+    <Route path='user/finance/:id' component={UserFinanceWithParam} />
+    <Route path='user/list/:id' component={UserListWithParam} />
+    <Route path='user/select/:id' component={UserSelectWithParam} />
+  </Route>
+</Router>;
 
  //{/* On injecte comme composant d'application un composant connecté au store redux */}
   //{/* Le composant IndexRoute signifie qui sera appellée par défaut*/}
-export default 
-<Router history={hashHistory} >
-  <Route path='/' component={App} >
-    <IndexRoute component={Home}/>
-    {/* Les :id sert à fournir un paramètre à l'url on extrait les paramètres d'url via la props params*/}
-    <Route path='user/:id' component={({params}) => <User id={params.id} />} />
-    <Route path='user/finance/:id' component={({params}) => <UserFinance id={params.id} />} />
-    <Route path='user/list/:id' component={({params}) => <UserList id={params.id} />} />
-    <Route path='user/select/:id' component={({params}) => <UserSelect id={params.id} />} />
-  </Route>
-</Router>;
+export default router;

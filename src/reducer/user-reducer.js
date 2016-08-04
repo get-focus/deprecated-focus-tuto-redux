@@ -4,7 +4,7 @@ import {saveUserTypes} from '../actions/user-actions';
 
 // Données initiales pour la state redux
 const DEFAULT_DATA = {
-    firstName:'Amélie'
+    firstName:'Pierre'
 };
 
 // Utilisation du reducerBuilder qui attends un name correspondant à votre entité, puis les types de load renvoyés par les actions

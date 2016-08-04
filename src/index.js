@@ -7,14 +7,14 @@ import builder from 'focus-redux/store/builder'
 import Root from './root';
 import reducer from './reducer'
 import configureStore from './store';
-
+const store = configureStore();
 const renderApp = RootComponent => {
   console.info('App rendered')
   ReactDOM.render(
     <AppContainer>
-      <RootComponent store={configureStore()} />
+      <RootComponent store={store} />
     </AppContainer>,
-      document.querySelector('.focus-redux-demo-app')
+    document.querySelector('.focus-redux-demo-app')
   );
 }
 
@@ -23,10 +23,6 @@ renderApp(Root);
 if (module.hot) {
 
 //   module.hot.decline('./routes.js');
-  module.hot.accept('./reducer', () => {
-    console.log('hot reducer accepted.')
-  //  window.location.reload()
-  });
   module.hot.accept('./root', () => {
     console.log('Root change')
 
