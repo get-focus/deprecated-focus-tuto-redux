@@ -89,7 +89,7 @@ import ReactDOM from 'react-dom';
 // On crée le composant Application
 const App = props =>
 <div>
-    /*{On injecte la props name dans le titre}*/
+    {/*On injecte la props name dans le titre*/}
     <h1>Bienvenue {props.name}</h1>
 </div>;
 
