@@ -1,10 +1,10 @@
 import React, {Component, PropTypes} from 'react';
-import {connect as connectToForm } from 'focus-redux/behaviours/form';
-import {connect as connectToMetadata} from 'focus-redux/behaviours/metadata';
-import {connect as connectToFieldHelpers} from 'focus-redux/behaviours/field';
+import {connect as connectToForm } from 'focus-graph/behaviours/form';
+import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
+import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
 import {loadUserFinanceAction, saveUserFinanceAction} from '../../actions/finance-user-actions';
 
-import Panel from 'focus-redux/components/panel';
+import Panel from 'focus-graph/components/panel';
 import compose from 'lodash/flowRight';
 import FinancialMoveLine from './financialMoveLine'
 

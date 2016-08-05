@@ -1,6 +1,6 @@
-import builder from 'focus-redux/store/builder';
+import builder from 'focus-graph/store/builder';
 import rootReducer from '../reducer';
-import {INPUT_CHANGE, INPUT_ERROR, MY_ACTION} from 'focus-redux/actions/input';
+import {INPUT_CHANGE, INPUT_ERROR, MY_ACTION} from 'focus-graph/actions/input';
 
 
 export const amoutToUpperCaseMiddleware = store => next => action => {

@@ -23,7 +23,7 @@
         "MINIMIFY": false,
         "API_PORT": 9999,
         "PACKAGE_JSON_PATH": "../",
-        "ANCHOR_CLASS": "focus-redux-demo-app"
+        "ANCHOR_CLASS": "focus-graph-demo-app"
       }
     },
     "watch": {
@@ -36,7 +36,7 @@
         "MINIMIFY": false,
         "API_PORT": 9999,
         "PACKAGE_JSON_PATH": "../",
-        "ANCHOR_CLASS": "focus-redux-demo-app"
+        "ANCHOR_CLASS": "focus-graph-demo-app"
       }
     },
     "babelify": {
@@ -114,7 +114,7 @@
   "dependencies": {
     "focus-components": "^0.16.0",
     "focus-core": "^0.16.0",
-    "focus-redux": "^0.2.2-beta.1",
+    "focus-graph": "^0.2.2-beta.2",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",

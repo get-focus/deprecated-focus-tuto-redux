@@ -1,4 +1,4 @@
-import {reducerBuilder} from 'focus-redux/reducers/reducer-builder';
+import {reducerBuilder} from 'focus-graph/reducers/reducer-builder';
 import {loadUserTypes} from '../actions/user-actions';
 import {saveUserTypes} from '../actions/user-actions';
 

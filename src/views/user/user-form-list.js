@@ -1,11 +1,11 @@
 import React, {Component, PropTypes} from 'react';
 import {connect as connectToState} from 'react-redux';
-import {connect as connectToForm } from 'focus-redux/behaviours/form';
-import {connect as connectToMetadata} from 'focus-redux/behaviours/metadata';
-import {connect as connectToFieldHelpers} from 'focus-redux/behaviours/field';
+import {connect as connectToForm } from 'focus-graph/behaviours/form';
+import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
+import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
 import {loadFinanceAction, saveFinanceAction} from '../../actions/finance-actions';
-//import selectData from 'focus-redux/store/selectData'
-import Panel from 'focus-redux/components/panel';
+//import {selectData} from 'focus-graph/store/create-store'
+import Panel from 'focus-graph/components/panel';
 import compose from 'lodash/flowRight';
 import FinancialMoveLine from './financialMoveLine'
 
@@ -19,9 +19,9 @@ const User = ({fieldFor,listFor, rawInputValue, victoire, echec,  ...otherProps}
 )
 
 const selectData = name => (state ={}) => {
-  if( !state.dataset[name]) {
+  if( !state.customData[name]) {
     console.warn(`SELECT_DATA : there is no ${name} in the dataset of the state`)
-    return state.dataset;
+    return state.customData;
   }
   return state.dataset[name]
 }

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
 import {createStore} from 'redux';
-import builder from 'focus-redux/store/builder'
+import builder from 'focus-graph/store/builder'
 import Root from './root';
 import reducer from './reducer'
 import configureStore from './store';
@@ -14,7 +14,7 @@ const renderApp = RootComponent => {
     <AppContainer>
       <RootComponent store={store} />
     </AppContainer>,
-    document.querySelector('.focus-redux-demo-app')
+    document.querySelector('.focus-graph-demo-app')
   );
 }
 
