@@ -12,7 +12,7 @@ function FinancialMoveLine({onClick, children, fieldForLine, options,index,  ...
 
 FinancialMoveLine.displayName = 'financialMoveLine';
 FinancialMoveLine.propTypes = {
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
     options: PropTypes.arrayOf(PropTypes.string)
 };
 FinancialMoveLine.defaultProps = {
