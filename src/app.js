@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {compose} from 'redux';
 import {connect as connectToStore} from 'react-redux';
-import {connect as connectToMetadata} from 'focus-redux/behaviours/metadata';
+import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
 import DevTools from './containers/dev-tools';
 
 // Ceci est un sélecteur de state, il sera localisé près de son reducer plus tard.

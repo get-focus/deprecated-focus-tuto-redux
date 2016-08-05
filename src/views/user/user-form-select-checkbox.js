@@ -1,13 +1,13 @@
 import React, {Component, PropTypes} from 'react';
 import find from 'lodash/find';
 
-import {connect as connectToForm } from 'focus-redux/behaviours/form';
-import {connect as connectToMetadata} from 'focus-redux/behaviours/metadata';
-import {connect as connectToFieldHelpers} from 'focus-redux/behaviours/field';
-import {connect as connectToMasterData} from 'focus-redux/behaviours/master-data';
+import {connect as connectToForm } from 'focus-graph/behaviours/form';
+import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
+import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
+import {connect as connectToMasterData} from 'focus-graph/behaviours/master-data';
 import {loadUserAction, saveUserAction} from '../../actions/user-actions';
 
-import Panel from 'focus-redux/components/panel';
+import Panel from 'focus-graph/components/panel';
 import compose from 'lodash/flowRight';
 
 class UserForm extends Component {

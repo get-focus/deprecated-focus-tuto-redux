@@ -69,7 +69,7 @@ Un peu comme ceci
       "MINIMIFY": false, // Doit'on minifier les sources
       "API_PORT": 9999, // Le port de l'api
       "PACKAGE_JSON_PATH": "../",// Le chemin du package.json
-      "ANCHOR_CLASS": "focus-redux-demo-app" // Quelle est la classe du container
+      "ANCHOR_CLASS": "focus-graph-demo-app" // Quelle est la classe du container
     }
   }
 }
@@ -97,9 +97,9 @@ const App = props =>
 ReactDOM.render(
   // On créé le composant App et on lui fournit une props name
   <App name='pierre' />,
-  // Conteneur HTML <div class='focus-redux-demo-app'></div>
+  // Conteneur HTML <div class='focus-graph-demo-app'></div>
   // Présent en amont
-  document.querySelector('.focus-redux-demo-app')
+  document.querySelector('.focus-graph-demo-app')
 );
 ```
 
@@ -134,7 +134,7 @@ const App = props => <div><h1>Bienvenue {props.name}</h1>{props.children}</div>;
 
 ReactDOM.render(
   <Router history={hashHistory}><Route path='/' component={App} /></Router>,
-  document.querySelector('.focus-redux-demo-app')
+  document.querySelector('.focus-graph-demo-app')
 );
 ```
 - Ensuite nous allons créer deux composants simples
@@ -174,7 +174,7 @@ ReactDOM.render(
       <Route path='user/:id' component={({params}) => <User id={params.id}/>} />
     </Route>
   </Router>,
-  document.querySelector('.focus-redux-demo-app')
+  document.querySelector('.focus-graph-demo-app')
 );
 ```
 > Maintenant on a un routeur et une application qui fonctionnent pas trop mal
@@ -219,7 +219,7 @@ Root.propTypes = {store: PropTypes.object.isRequired};
 // On passe le store en props à root
 ReactDOM.render(
   <Root store={store} />,
-  document.querySelector('.focus-redux-demo-app')
+  document.querySelector('.focus-graph-demo-app')
 );
 ```
 
@@ -273,7 +273,7 @@ Root.propTypes = {store: PropTypes.object.isRequired};
 
 ReactDOM.render(
   <Root store={store} />,
-  document.querySelector('.focus-redux-demo-app')
+  document.querySelector('.focus-graph-demo-app')
 );
 ```
 
@@ -373,7 +373,7 @@ On peut donc créer un fichier de config qui contiendra les domaines.
 Les domaines sont définis plus particulièrement [ici](http://kleegroup.github.io/focus-docs/tutorial/surcharger-form-input.html).
 
 > Pour information, vous pouvez insérer ce que vous souhaitez dans les domaines afin de le récupérer dans le composant cible.
-> Je vous invite à lire la superbe documentation dans le connecteur de metadata [ici](https://github.com/get-focus/focus-redux/blob/master/src/behaviours/metadata.js#L71) :+1
+> Je vous invite à lire la superbe documentation dans le connecteur de metadata [ici](https://github.com/get-focus/focus-graph/blob/master/src/behaviours/metadata.js#L71) :+1
 > L'objectif de ces metadonnées est d'être fournies au composant générique `Field`
 
 ![slack for ios upload](https://cloud.githubusercontent.com/assets/286966/16376434/7e7d06c4-3c60-11e6-9f4e-5b263df071b2.jpg)
@@ -488,7 +488,7 @@ export const financialMove = {
 - Nous allons ajouter les lignes suivantes afin de fournir à l'ensemble des composants fils le contenu des domaines et des définitions.
 
 ```jsx
-import {Provider as MetadataProvider} from 'focus-redux/behaviours/metadata';
+import {Provider as MetadataProvider} from 'focus-graph/behaviours/metadata';
 import * as definitions from './config/entity-definitions';
 import * as domains from './config/domains';
 
@@ -513,7 +513,7 @@ import * as domains from './config/domains';
 
 ```jsx
 import {compose} from 'redux'; // Pour composer les connecteurs
-import {connect as connectToMetadata} from 'focus-redux/behaviours/metadata';
+import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
 // ...
 // On crée le composant Application
 const App = props =>
@@ -541,9 +541,9 @@ export default compose(
 Dans le composant root.
 
 ```jsx
-import {Provider as MetadataProvider} from 'focus-redux/behaviours/metadata';
-import {Provider as FieldHelpersProvider} from 'focus-redux/behaviours/field';
-import {Provider as MasterDataProvider} from 'focus-redux/behaviours/master-data';
+import {Provider as MetadataProvider} from 'focus-graph/behaviours/metadata';
+import {Provider as FieldHelpersProvider} from 'focus-graph/behaviours/field';
+import {Provider as MasterDataProvider} from 'focus-graph/behaviours/master-data';
 //...
 const Root = ({store, history}) => /*On place le provider de store au plus haut afin de pouvoir injecter des informations du store dans toute l'applciation.*/
 <StoreProvider store={store}>
@@ -602,7 +602,7 @@ Voici ce que le `createStoreWithFocus` manipule.
     - `master-data`: les reducers responsables de stocker les listes de références
     - `metadata`: les reducers responsables de stocker les domaines et les définitions
     - `form` qui contiendra la partie du state propre à chaque formulaire ou bloc de données indépendants. Ce morceau de state sera populé par les middlewares à chaque action comme chargement des données, sauvegarde des données, validation, saisie dans le champ, sortie de champ. Cette partie de state contient également l'ensemble des informations de chaque field de l'application comme : est-ce que le champ a changé, quel est sa valeur formattée, est ce qu'il est en édition, est ce qu'il a une erreur.
-    > Pour plus d'informations, n'hésitez pas à aller voir la forme du state de chaque [form](https://github.com/get-focus/focus-redux/blob/6cb7b32f50caaa8ebbd093b1e24459a1b9e2f3b5/src/reducers/form.js#L22) et de chaque [field](https://github.com/get-focus/focus-redux/blob/6cb7b32f50caaa8ebbd093b1e24459a1b9e2f3b5/src/reducers/form.js#L31)
+    > Pour plus d'informations, n'hésitez pas à aller voir la forme du state de chaque [form](https://github.com/get-focus/focus-graph/blob/6cb7b32f50caaa8ebbd093b1e24459a1b9e2f3b5/src/reducers/form.js#L22) et de chaque [field](https://github.com/get-focus/focus-graph/blob/6cb7b32f50caaa8ebbd093b1e24459a1b9e2f3b5/src/reducers/form.js#L31)
 
   - `...otherReducers` qui contiendra d'autres reducers que vous pouvez fournir pour les extensions par exemple.
 - `middleware {customMiddlewares, formMiddleware, fieldMiddleware, thunkMiddleware}`
@@ -617,7 +617,7 @@ Voici ce que le `createStoreWithFocus` manipule.
 Dans votre projet, vous allez créer un fichier `store.js` qui contiendra les éléments suivants:
 
 ```
-import createStoreWithFocus from 'focus-redux/store/create-store';
+import createStoreWithFocus from 'focus-graph/store/create-store';
 import dataSetReducer from '../../src/reducer';
 import {amoutToUpperCaseMiddleware, errorFieldMiddleware, ownActiondMiddleware} from '../../src/middleware/user-middleware';
 import DevTools from '../containers/dev-tools'
@@ -651,13 +651,13 @@ Nous avons besoin d'un composant React : User.
 
 ```jsx
 import React, {Component, PropTypes} from 'react';
-import {connect as connectToForm } from 'focus-redux/behaviours/form';
-import {connect as connectToMetadata} from 'focus-redux/behaviours/metadata';
-import {connect as connectToFieldHelpers} from 'focus-redux/behaviours/field';
+import {connect as connectToForm } from 'focus-graph/behaviours/form';
+import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
+import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
 import {loadUserAction, saveUserAction} from '../../actions/user-actions';
 
 // Les boutons de save et de load sont maintenant portés par le panel, attention de ne pas utiliser celui de Focus-components
-import Panel from 'focus-redux/components/panel';
+import Panel from 'focus-graph/components/panel';
 import {compose} from 'redux';
 
 class User extends Component {
@@ -717,18 +717,18 @@ Expliquons le pas à pas !
 ### Création d'un composant :
  Rien de bien nouveau sous le soleil, je vous invite à aller sur le site de React en cas de doute subsistant. Notre composant est un composant React des plus classiques.
 
-> A noter, le composant Panel utilisé, est le panel disponible dans Focus-redux et ainsi c'est lui qui pose les boutons save et load du panel d'où l'intérêt de lui passer `{...otherProps}`
+> A noter, le composant Panel utilisé, est le panel disponible dans focus-graph et ainsi c'est lui qui pose les boutons save et load du panel d'où l'intérêt de lui passer `{...otherProps}`
 
  > Dans l'immédiat, et pour une meilleure clarté de ce tutoriel, le composant User est une classe qui possède la logique ( load ... ) et l'affichage. En pratique, nous vous encourageons de séparer cette logique de l'affichage afin d'utiliser des composants pures, pour plus de performance, de beauté !
 
 ```jsx
 import React, {Component, PropTypes} from 'react';
-import {connect as connectToForm } from 'focus-redux/behaviours/form';
-import {connect as connectToMetadata} from 'focus-redux/behaviours/metadata';
-import {connect as connectToFieldHelpers} from 'focus-redux/behaviours/field';
+import {connect as connectToForm } from 'focus-graph/behaviours/form';
+import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
+import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
 import {loadUserAction, saveUserAction} from '../../actions/user-actions';
 
-import Panel from 'focus-redux/components/panel';
+import Panel from 'focus-graph/components/panel';
 import {compose} from 'redux';
 
 const User = ({fieldFor, ...otherProps}) => (
@@ -826,7 +826,7 @@ Dans le cas ou votre formulaire n'est associé qu'à une seule entité, il n'est
 Nous avons deux actions à écrire le load et le save. Il est alors possible d'utiliser l'actionBuilder. Nous préconisons l'utilisation de ce dernier, mais ce n'est pas une obligation.
 
 ```jsx
-import {actionBuilder} from 'focus-redux/actions/entity-actions-builder';
+import {actionBuilder} from 'focus-graph/actions/entity-actions-builder';
 import {loadUser, saveUser} from '../services/user-service';
 
 const _loadUserAction = actionBuilder({names: ['user'], type: 'load', service: loadUser});
@@ -860,7 +860,7 @@ Pour rappel un reducer est une fonction pure ( pas liée à un contexte, dans d'
 		`(previousState, action) => newState`
 
 ```jsx
-import {reducerBuilder} from 'focus-redux/reducers/reducer-builder';
+import {reducerBuilder} from 'focus-graph/reducers/reducer-builder';
 import {loadUserTypes} from '../actions/user-actions';
 import {saveUserTypes} from '../actions/user-actions';
 
@@ -959,12 +959,12 @@ Via le connecteur fieldHelpers il est possible d'utiliser un listFor et ainsi d'
 
 ```
 import React, {Component, PropTypes} from 'react';
-import {connect as connectToForm } from 'focus-redux/behaviours/form';
-import {connect as connectToMetadata} from 'focus-redux/behaviours/metadata';
-import {connect as connectToFieldHelpers} from 'focus-redux/behaviours/field';
+import {connect as connectToForm } from 'focus-graph/behaviours/form';
+import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
+import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
 import {loadFinanceAction, saveFinanceAction} from '../../actions/finance-actions';
 
-import Panel from 'focus-redux/components/panel';
+import Panel from 'focus-graph/components/panel';
 import {compose} from 'redux';
 import FinancialMoveLine from './financialMoveLine'
 
@@ -1093,7 +1093,7 @@ Il est possible, de manière très simple, d'ajouter deux nœuds à une actionBu
 
 ```jsx
 
-import {actionBuilder} from 'focus-redux/actions/entity-actions-builder';
+import {actionBuilder} from 'focus-graph/actions/entity-actions-builder';
 import {loadUserFinance, saveUserFinance} from '../services/user-finance-service';
 
 const _loadUserFinanceAction = actionBuilder({names: ['user', 'finance' ], type: 'load', service: loadUserFinance});
@@ -1139,7 +1139,7 @@ L'actionBuilder permet d'avoir un load pour deux entités, c'est l'action que vo
 Sinon je propose ces petits reducers ( et n'oubliez pas d'exporter vos types en retour de l'action) :
 
 ```jsx
-import {reducerBuilder} from 'focus-redux/reducers/reducer-builder';
+import {reducerBuilder} from 'focus-graph/reducers/reducer-builder';
 import {loadUserFinanceTypes, saveUserFinanceTypes} from '../actions/finance-user-actions';
 
 
@@ -1192,12 +1192,12 @@ Nous sommes fin prêts à mettre en place notre formulaire à deux noeuds :
 
 ```jsx
 import React, {Component, PropTypes} from 'react';
-import {connect as connectToForm } from 'focus-redux/behaviours/form';
-import {connect as connectToMetadata} from 'focus-redux/behaviours/metadata';
-import {connect as connectToFieldHelpers} from 'focus-redux/behaviours/field';
+import {connect as connectToForm } from 'focus-graph/behaviours/form';
+import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
+import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
 import {loadUserFinanceAction, saveUserFinanceAction} from '../../actions/finance-user-actions';
 
-import Panel from 'focus-redux/components/panel';
+import Panel from 'focus-graph/components/panel';
 import compose from 'lodash/flowRight';
 import FinancialMoveLine from './financialMoveLine'
 
@@ -1267,9 +1267,9 @@ Pour cela deux étapes  :
 - Ecrire le middleware :
 Vous pouvez créer un dossier middleware et écrire dans notre cas :
 ```jsx
-import builder from 'focus-redux/store/builder';
+import builder from 'focus-graph/store/builder';
 import rootReducer from '../reducer';
-import {INPUT_CHANGE, INPUT_ERROR} from 'focus-redux/actions/input';
+import {INPUT_CHANGE, INPUT_ERROR} from 'focus-graph/actions/input';
 
 
 export const amoutToUpperCaseMiddleware = store => next => action => {
@@ -1277,7 +1277,7 @@ export const amoutToUpperCaseMiddleware = store => next => action => {
     const {forms, definitions, domains} = store.getState();
     //On recherche l'action souhaitée sur le champs souhaité afin de réaliser notre action
     if (action.type === INPUT_CHANGE && action.fieldName == 'amount') {
-        // L'objet action est celui décrit dans les actions [focus-redux](https://github.com/get-focus/focus-redux/blob/master/src/actions/form.js) 
+        // L'objet action est celui décrit dans les actions [focus-graph](https://github.com/get-focus/focus-graph/blob/master/src/actions/form.js) 
         const {formKey} = action;
         const {fields} = forms.find(f=> f.formKey === formKey);
         //On met en forme notre nouvelle action
@@ -1303,7 +1303,7 @@ IL est très simple, via les middlewares, de se placer avant ou après une actio
 Pour cette partie, je vous invite à relire la partie sur le store Redux et sur le [createStoreWithFocus](https://github.com/get-focus/focus-tuto-redux/blob/master/README.md#dernier-point-avant-de-se-lancer-on-va-créer-un-store-un-peu-plus-avancé)
 
 ```jsx
-import createStoreWithFocus from 'focus-redux/store/create-store';
+import createStoreWithFocus from 'focus-graph/store/create-store';
 import rootReducer from '../../src/reducer';
 import {amoutToUpperCaseMiddleware} from '../../src/middleware/user-middleware';
 
@@ -1316,7 +1316,7 @@ export default store;
 
 ### Middleware, deuxième exemple
 
-Il est également possible de dispatcher un autre action. Il suffit pour cela de réaliser la même chose que précédemment en ajoutant seulement un autre type et en respectant le contract défini par les [actions](https://github.com/get-focus/focus-redux/blob/master/src/actions/form.js) du form. Il est possible de mettre en place toutes actions disponibles du form.
+Il est également possible de dispatcher un autre action. Il suffit pour cela de réaliser la même chose que précédemment en ajoutant seulement un autre type et en respectant le contract défini par les [actions](https://github.com/get-focus/focus-graph/blob/master/src/actions/form.js) du form. Il est possible de mettre en place toutes actions disponibles du form.
 
 ```jsx
 export const errorFieldMiddleware = store => next => action => {
@@ -1339,7 +1339,7 @@ export const errorFieldMiddleware = store => next => action => {
 sans oublier de l'injecter lors de la construction du store :
 
 ```jsx
-import builder from 'focus-redux/store/builder';
+import builder from 'focus-graph/store/builder';
 import rootReducer from '../../src/reducer';
 import {amoutToUpperCaseMiddleware, errorFieldMiddleware} from '../../src/middleware/user-middleware';
 
@@ -1353,7 +1353,7 @@ export default store;
 
 > En pratique ce troisième cas ne sera pas le plus utilisé, mais c'est toujours bien de savoir que c'est possible. Qui plus est, ça montre d'autant plus la force de redux ( au cas où vous ne seriez pas encore convaincu ).
 
-Avec Focus-redux, un nombre d'actions de base est déjà présent, comme `input_change`, ou le `create_form`. Cependant pour des besoins spécifiques (très spécifiques), il se peut que vous ayez besoin d'avoir une action qui ajoute, modifie une partie du state et qui ne sera pas disponible via le form. Il faut alors écrire cette action. Pour ça, il y a un peu plus d'étapes.
+Avec focus-graph, un nombre d'actions de base est déjà présent, comme `input_change`, ou le `create_form`. Cependant pour des besoins spécifiques (très spécifiques), il se peut que vous ayez besoin d'avoir une action qui ajoute, modifie une partie du state et qui ne sera pas disponible via le form. Il faut alors écrire cette action. Pour ça, il y a un peu plus d'étapes.
 
 > Attention via cette technique il n'est pas possible de modifier l'objet form (et donc fields) du state, qui ne peut se modifier qu'à travers les actions du form. 
 
@@ -1428,7 +1428,7 @@ Un dernier petit effort, c'est presque fini ! Donc maintenant que notre informat
 
 ```jsx
 import {connect as connectToState} from 'react-redux';
-import {selectData} from 'focus-redux/store/create-store';
+import {selectData} from 'focus-graph/store/create-store';
 
 [...]
 
@@ -1485,12 +1485,12 @@ import {masterDataConfig} from './config/master-data-config'
  Sinon, pour les listes de références il faut ajouter le connecteur des MasterData : `connectToMetadata(['user'])`, mais aussi le load dans le `componentWillMount` : `loadMasterData();` et dans le selectFor : `{selectFor('civility', {entityPath: 'user', masterDatum: 'civility'})}` il faut préciser le propriété masterDatum et le tour est joué !
 
 ```jsx
-import {connect as connectToMetadata} from 'focus-redux/behaviours/metadata';
-import {connect as connectToFieldHelpers} from 'focus-redux/behaviours/field';
-import {connect as connectToMasterData} from 'focus-redux/behaviours/master-data';
+import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
+import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
+import {connect as connectToMasterData} from 'focus-graph/behaviours/master-data';
 import {loadUserAction, saveUserAction} from '../../actions/user-actions';
 
-import Panel from 'focus-redux/components/panel';
+import Panel from 'focus-graph/components/panel';
 import {compose} from 'redux';
 
 class UserForm extends Component {

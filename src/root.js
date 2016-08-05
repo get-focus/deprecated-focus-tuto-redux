@@ -1,8 +1,8 @@
 import React, {PropTypes, Component} from 'react';
 import {Provider as StoreProvider} from 'react-redux';
-import {Provider as MetadataProvider} from 'focus-redux/behaviours/metadata';
-import {Provider as FieldHelpersProvider} from 'focus-redux/behaviours/field';
-import {Provider as MasterDataProvider} from 'focus-redux/behaviours/master-data';
+import {Provider as MetadataProvider} from 'focus-graph/behaviours/metadata';
+import {Provider as FieldHelpersProvider} from 'focus-graph/behaviours/field';
+import {Provider as MasterDataProvider} from 'focus-graph/behaviours/master-data';
 
 import * as definitions from './config/entity-definitions';
 import * as domains from './config/domains';

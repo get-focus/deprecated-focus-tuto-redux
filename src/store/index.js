@@ -1,8 +1,8 @@
-import createStoreWithFocus, {combineReducerWithFocus} from 'focus-redux/store/builder';
+import createStoreWithFocus, {combineReducerWithFocus} from 'focus-graph/store/create-store';
 import rootReducer from '../reducer';
 import {amoutToUpperCaseMiddleware, errorFieldMiddleware, ownActiondMiddleware} from '../../src/middleware/user-middleware';
 import DevTools from '../containers/dev-tools'
-
+import customReducer from '../reducer/custom-reducer';
 let lastCreatedStore;
 
 if(module.hot){
@@ -17,7 +17,7 @@ if(module.hot){
 
 export default function configureStore(initialState){
   const store = createStoreWithFocus(
-    rootReducer,
+    {dataset: rootReducer, customData: customReducer },
     [errorFieldMiddleware, amoutToUpperCaseMiddleware,ownActiondMiddleware],
     [DevTools.instrument()]
   );

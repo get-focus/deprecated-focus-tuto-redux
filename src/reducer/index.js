@@ -9,6 +9,5 @@ import customReducer from './custom-reducer';
 
 export default combineReducers({
     user,
-    finance,
-    customData : customReducer
+    finance
   });

@@ -1,4 +1,4 @@
-import {reducerBuilder} from 'focus-redux/reducers/reducer-builder';
+import {reducerBuilder} from 'focus-graph/reducers/reducer-builder';
 import {loadFinanceTypes} from '../actions/finance-actions';
 import {saveFinanceTypes} from '../actions/finance-actions';
 
