@@ -8,15 +8,19 @@ import Panel from 'focus-graph/components/panel';
 import compose from 'lodash/flowRight';
 import {confirm} from 'focus-application/lib/confirm/confirm-actions';
 
-const User = ({fieldFor, dispatch, ...otherProps}) => (
+let msgId = 0;
+
+const User = ({fieldFor, confirm, ...otherProps}) => (
   <Panel title='User' {...otherProps}>
       {fieldFor('uuid', {entityPath: 'user'})}
       {fieldFor('firstName', {entityPath: 'user'})}
       {fieldFor('lastName', {entityPath: 'user'})}
-      <button onClick={ () => dispatch(confirm('Amelie :pikax: Thomas', {
+      <button onClick={ () => confirm('Amelie :pikax: Thomas', {
       resolve: d => console.log('ok', d),
       reject: err =>console.log('ko', err)
-    }))}></button>
+    })}>Confirm test</button>
+
+    <button onClick={() => dispatch({type: 'PUSH_MESSAGE', message:{id: `msg_${msgId++}`, type: 'info', content: `Hello content ${msgId}`}})}>Message App test</button>
   </Panel>
 )
 
@@ -55,7 +59,7 @@ const ConnectedUserForm = compose(
   fake tricks to extract dispatch into the props.
   QUestion => @Ephrame should this be provided by the form connect ?
   */
-  connect()(SmartUser)
+  connect(null, {confirm})(SmartUser)
 );
 
 export default ConnectedUserForm;
