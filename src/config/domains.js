@@ -1,4 +1,4 @@
-import Checkbox from 'focus-components/components/input/checkbox'
+import Checkbox from 'focus-components/input/checkbox'
 
 export const DO_ID = {
   type: 'text',
