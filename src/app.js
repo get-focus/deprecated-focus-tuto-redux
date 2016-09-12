@@ -3,7 +3,9 @@ import {compose} from 'redux';
 import {connect as connectToStore} from 'react-redux';
 import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
 import DevTools from './containers/dev-tools';
-
+import Layout from 'focus-application/lib/layout'
+import LoadingBar from 'focus-application/lib/fetch'
+import ConfirmWrapper from 'focus-application/lib/confirm'
 // Ceci est un sélecteur de state, il sera localisé près de son reducer plus tard.
 const userSelector = state => ({...state.user});
 
@@ -11,13 +13,13 @@ const StateDisplayer = connectToStore(s => s)(props => <pre><code>{JSON.stringif
 
 // On crée le composant Application
 const App = props =>
-  <div style={{color: 'blue'}}>
+  <Layout LoadingBar={LoadingBar} ConfirmWrapper={ConfirmWrapper}>
     <DevTools />
     <h1>Bienvenue dans ce superbe tutoriel dd{props.name} </h1>
     {/* On récupère les définitions dans les props*/}
     {props.children}
     <StateDisplayer/ >
-  </div>;
+  </Layout>;
 
 App.defaultProps = {
   name: 'Without name maybe not...'

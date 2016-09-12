@@ -1,4 +1,4 @@
-import 'babel-polyfill';
+import fetch from './fetch';
 
 export const loadFinance = async ({id}) => {
     const response = await fetch(`http://localhost:9999/x/complex/${id}`)

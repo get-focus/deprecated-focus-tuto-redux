@@ -1,13 +1,16 @@
+import 'babel-polyfill';
 import React , {PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-
 import {createStore} from 'redux';
 import builder from 'focus-graph/store/builder'
 import Root from './root';
 import reducer from './reducer'
 import configureStore from './store';
+import {initFetch} from './services/fetch';
 const store = configureStore();
+initFetch(store.dispatch);
+
 const renderApp = RootComponent => {
   console.info('App rendered')
   ReactDOM.render(

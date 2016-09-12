@@ -3,6 +3,12 @@ import rootReducer from '../reducer';
 import {amoutToUpperCaseMiddleware, errorFieldMiddleware, ownActiondMiddleware} from '../../src/middleware/user-middleware';
 import DevTools from '../containers/dev-tools'
 import customReducer from '../reducer/custom-reducer';
+
+import messageReducer from 'focus-application/lib/messages/messages-reducer';
+import headerReducer from 'focus-application/lib/header/header-reducer';
+import confirmReducer from 'focus-application/lib/confirm/confirm-reducer';
+import fetchReducer from 'focus-application/lib/fetch/fetch-reducer';
+
 let lastCreatedStore;
 
 if(module.hot){
@@ -16,8 +22,14 @@ if(module.hot){
 }
 
 export default function configureStore(initialState){
-  const store = createStoreWithFocus(
-    {dataset: rootReducer, customData: customReducer },
+  const store = createStoreWithFocus({
+      dataset: rootReducer,
+      customData: customReducer,
+      messages: messageReducer,
+      header: headerReducer,
+      confirm: confirmReducer,
+      fetch:fetchReducer
+    },
     [errorFieldMiddleware, amoutToUpperCaseMiddleware,ownActiondMiddleware],
     [DevTools.instrument()]
   );
