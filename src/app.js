@@ -1,9 +1,5 @@
-/* <style> */
 import 'focus-components/style';
-import 'focus-application/lib/layout/layout.scss'
-/* </style>*/
-import 'material-design-lite/material'
-//require('material-design-lite/material.css')
+
 import React, {PropTypes} from 'react';
 import {compose} from 'redux';
 import {connect as connectToStore} from 'react-redux';
