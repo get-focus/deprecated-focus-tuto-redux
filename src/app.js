@@ -1,5 +1,3 @@
-import 'focus-components/style';
-
 import React, {PropTypes} from 'react';
 import {compose} from 'redux';
 import {connect as connectToStore} from 'react-redux';

@@ -1,7 +1,6 @@
-import Checkbox from 'focus-components/input/checkbox'
-import InputDate from 'focus-components/input/date'
-
-import InputText from 'focus-components/input/text'
+import Checkbox from 'focus-components/input-checkbox'
+import InputDate from 'focus-components/input-date'
+import InputText from 'focus-components/input-text'
 
 export const DO_ID = {
   type: 'text',

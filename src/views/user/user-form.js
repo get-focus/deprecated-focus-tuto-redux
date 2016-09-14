@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import Panel from 'focus-components/panel';
 import compose from 'lodash/flowRight';
 import {confirm} from 'focus-application/lib/confirm/confirm-actions';
-import Input from 'focus-components/input/text';
+import Input from 'focus-components/input-text';
 let msgId = 0;
 
 const User = ({fieldFor, confirm, ...otherProps}) => (
