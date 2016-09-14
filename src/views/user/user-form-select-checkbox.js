@@ -7,7 +7,7 @@ import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
 import {connect as connectToMasterData} from 'focus-graph/behaviours/master-data';
 import {loadUserAction, saveUserAction} from '../../actions/user-actions';
 
-import Panel from 'focus-graph/components/panel';
+import Panel from 'focus-components/panel';
 import compose from 'lodash/flowRight';
 
 class UserForm extends Component {

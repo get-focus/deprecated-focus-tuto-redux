@@ -4,7 +4,7 @@ import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
 import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
 import {loadUserFinanceAction, saveUserFinanceAction} from '../../actions/finance-user-actions';
 
-import Panel from 'focus-graph/components/panel';
+import Panel from 'focus-components/panel';
 import compose from 'lodash/flowRight';
 import FinancialMoveLine from './financialMoveLine'
 
