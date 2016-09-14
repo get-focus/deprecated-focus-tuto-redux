@@ -15,6 +15,7 @@ const User = ({fieldFor,listFor, rawInputValue, victoire, echec,  ...otherProps}
   <Panel title={victoire ? "User " +victoire : "User " +echec} {...otherProps}>
       {fieldFor('name', {entityPath: 'finance'})}
       {fieldFor('amount', {entityPath: 'finance'})}
+      {fieldFor('date', {entityPath: 'finance'})}
       {fieldFor('test', {entityPath: 'finance'})}
   </Panel>
 )

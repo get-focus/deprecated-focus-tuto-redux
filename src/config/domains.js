@@ -1,8 +1,11 @@
 import Checkbox from 'focus-components/input/checkbox'
-import InputTewx from 'focus-components/input/text'
+import InputDate from 'focus-components/input/date'
+
+import InputText from 'focus-components/input/text'
+
 export const DO_ID = {
   type: 'text',
- InputComponent: InputTewx
+ InputComponent: InputText
 
   //InputComponent: (props) => <div>DO_ID {JSON.stringify(props)}</div>
 }
@@ -11,6 +14,14 @@ export const DO_TEXTE = {
   type: 'text',
   //InputComponent: (props) => <div>DO_TEXTE {JSON.stringify(props)}</div>
 }
+
+
+export const DO_DATE = {
+  type: 'text',
+  InputComponent: props => <div>Yo</div>
+}
+
+
 export const DO_AMOUNT = {
   type: 'number',
   //InputComponent: (props) => <div>DO_AMOUNT {JSON.stringify(props)}</div>

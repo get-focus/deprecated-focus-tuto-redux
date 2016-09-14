@@ -41,6 +41,10 @@ export const finance = {
     domain: 'DO_SYMBOL',
     isRequired: true
   },
+  date: {
+    domain: 'DO_DATE',
+    isRequired: false
+  },
   test : {
     domain: 'DO_CHECKBOX',
     isRequired: false
