@@ -1,4 +1,5 @@
 import 'babel-polyfill';
+import 'focus-components/style'
 import React , {PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
