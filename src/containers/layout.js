@@ -13,7 +13,7 @@ import ConfirmationPopin from 'focus-components/confirmation-popin';
 
 // Wrap application component with focus components
 const ConfirmComponent = props => <ConfirmWrapper {...props}  ConfirmationModal={ConfirmationPopin}/>
-
+const AppMessages = props => <MessageCenter {...props} //>
 
 const StateDisplayer = connectToStore(s => s)(props => <pre><code>{JSON.stringify(props, null, 4)}</code></pre>)
 
