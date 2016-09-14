@@ -114,15 +114,15 @@
   },
   "dependencies": {
     "focus-application": "0.0.4",
-    "focus-components": "^3.0.0-beta12",
-    "focus-core": "^0.16.0",
+    "focus-components": "^3.0.0-beta17",
     "focus-graph": "^0.2.4-beta0",
-    "material-design-lite": "^1.2.1",
+    "material-design-lite": "1.2.1",
+    "material-design-icons-iconfont": "2.0.4",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.6.1",
     "redux": "^3.6.0",
-    "redux-thunk": "^1.0.3"
+    "redux-thunk": "^2.1.0"
   }
 }
