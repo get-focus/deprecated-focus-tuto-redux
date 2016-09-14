@@ -1,7 +1,9 @@
 import Checkbox from 'focus-components/input/checkbox'
-
+import InputTewx from 'focus-components/input/text'
 export const DO_ID = {
   type: 'text',
+ InputComponent: InputTewx
+
   //InputComponent: (props) => <div>DO_ID {JSON.stringify(props)}</div>
 }
 

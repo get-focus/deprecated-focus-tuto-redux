@@ -86,7 +86,7 @@
     "json-loader": "^0.5.4",
     "lodash": "^4.6.1",
     "material-design-icons-iconfont": "^2.0.4",
-    "material-design-lite": "^1.1.1",
+    "material-design-lite": "^1.2.1",
     "mocha": "^2.4.5",
     "moment": "^2.12.0",
     "node-sass": "^3.4.2",

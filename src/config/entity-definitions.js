@@ -1,8 +1,7 @@
 export const user = {
   uuid: {
     domain: 'DO_ID',
-    isRequired: true
-  },
+    isRequired: true  },
   firstName: {
     domain: 'DO_TEXTE',
     isRequired: true

@@ -4,15 +4,17 @@ import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
 import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
 import {loadUserAction, saveUserAction} from '../../actions/user-actions';
 import {connect} from 'react-redux';
-import Panel from 'focus-graph/components/panel';
+import Panel from 'focus-components/panel';
 import compose from 'lodash/flowRight';
 import {confirm} from 'focus-application/lib/confirm/confirm-actions';
-
+import Input from 'focus-components/input/text';
 let msgId = 0;
 
 const User = ({fieldFor, confirm, ...otherProps}) => (
+  <div>
+  Bien le bonjour
   <Panel title='User' {...otherProps}>
-      {fieldFor('uuid', {entityPath: 'user'})}
+      {fieldFor('uuid', {entityPath: 'user', options: {InputComponent: props => <div>Looooool</div>}})}
       {fieldFor('firstName', {entityPath: 'user'})}
       {fieldFor('lastName', {entityPath: 'user'})}
       <button onClick={ () => confirm('Amelie :pikax: Thomas', {
@@ -22,6 +24,9 @@ const User = ({fieldFor, confirm, ...otherProps}) => (
 
     <button onClick={() => dispatch({type: 'PUSH_MESSAGE', message:{id: `msg_${msgId++}`, type: 'info', content: `Hello content ${msgId}`}})}>Message App test</button>
   </Panel>
+
+  </div>
+
 )
 
 

@@ -9,10 +9,14 @@ import * as domains from './config/domains';
 import {masterDataConfig} from './config/master-data-config'
 import router from './router';
 
+
+import InputText from 'focus-components/input/text'
+
+
 const RootPure = ({store}) => /*On place le provider de store au plus haut afin de pouvoir injecter des informations du store dans toute l'applciation.*/
 <StoreProvider store={store}>
   <MetadataProvider definitions={definitions} domains={domains}>
-    <FieldHelpersProvider >
+    <FieldHelpersProvider InputComponent={InputText}>
       <MasterDataProvider configuration={masterDataConfig}>
         {router}
       </MasterDataProvider>

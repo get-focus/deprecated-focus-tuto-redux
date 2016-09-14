@@ -1,3 +1,6 @@
+import 'focus-components/style';
+import 'material-design-lite/material'
+//require('material-design-lite/material.css')
 import React, {PropTypes} from 'react';
 import {compose} from 'redux';
 import {connect as connectToStore} from 'react-redux';
@@ -7,6 +10,7 @@ import Layout from 'focus-application/lib/layout'
 import LoadingBar from 'focus-application/lib/fetch'
 import ConfirmWrapper from 'focus-application/lib/confirm';
 import MessageCenter from 'focus-application/lib/messages';
+
 // Ceci est un sélecteur de state, il sera localisé près de son reducer plus tard.
 const userSelector = state => ({...state.user});
 
