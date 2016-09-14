@@ -10,24 +10,28 @@ import {confirm} from 'focus-application/lib/confirm/confirm-actions';
 import Input from 'focus-components/input-text';
 let msgId = 0;
 
-const User = ({fieldFor, confirm, ...otherProps}) => (
-    <div>
-        <Panel title='User' {...otherProps}>
-            {fieldFor('uuid', {entityPath: 'user', options: {InputComponent: props => <div>Looooool</div>}})}
-            {fieldFor('firstName', {entityPath: 'user'})}
-            {fieldFor('lastName', {entityPath: 'user'})}
-            <button onClick={ () => confirm('Amelie :pikax: Thomas', {
-                    resolve: d => console.log('ok', d),
-                    reject: err =>console.log('ko', err)
-                })}>Confirm test</button>
+const msgCreat = () => {
+  msgId++;
+  return {
+    type: 'PUSH_MESSAGE',
+    message:{id: `msg_${msgId}`, type: 'info', content: `Hello content ${msgId}`}
+  };
+}
+const User = ({fieldFor, confirm, msgCreat, ...otherProps}) => (
+  <div>
+  Bien le bonjour
+  <Panel title='User' {...otherProps}>
+      {fieldFor('uuid', {entityPath: 'user', options: {InputComponent: props => <div>Looooool</div>}})}
+      {fieldFor('firstName', {entityPath: 'user'})}
+      {fieldFor('lastName', {entityPath: 'user'})}
+      <button onClick={ () => confirm('Amelie :pikax: Thomas', {
+      resolve: d => console.log('ok', d),
+      reject: err =>console.log('ko', err)
+    })}>Confirm test</button>
 
-                <button onClick={() => dispatch({type: 'PUSH_MESSAGE', message:{id: `msg_${msgId++}`, type: 'info', content: `Hello content ${msgId}`}})}>Message App test</button>
-            </Panel>
-
-        </div>
-
-    )
-
+    <button onClick={() => msgCreat()}>Message App test</button>
+  </Panel>
+);
 
     class SmartUser extends Component {
         componentWillMount() {
@@ -54,16 +58,17 @@ const User = ({fieldFor, confirm, ...otherProps}) => (
         nonValidatedFields: ['user.firstName']
     };
 
-    const ConnectedUserForm = compose(
-        connectToMetadata(['user']),
-        connectToForm(formConfig),
-        connectToFieldHelpers()
-    )(
-        /*
-        fake tricks to extract dispatch into the props.
-        QUestion => @Ephrame should this be provided by the form connect ?
-        */
-        connect(null, {confirm})(SmartUser)
-    );
+const ConnectedUserForm = compose(
+    connectToMetadata(['user']),
+    connectToForm(formConfig),
+    connectToFieldHelpers()
+)(
+  /*
+  fake tricks to extract dispatch into the props.
+  QUestion => @Ephrame should this be provided by the form connect ?
+  */
+  connect(null, {confirm, msgCreat })(SmartUser)
+);
+
 
     export default ConnectedUserForm;
