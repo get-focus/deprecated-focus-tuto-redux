@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, {PureComponent, PropTypes} from 'react';
 import {connect as connectToForm } from 'focus-graph/behaviours/form';
 import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
 import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
@@ -31,24 +31,25 @@ const User = ({fieldFor, confirm, msgCreat, ...otherProps}) => (
 
     <button onClick={() => msgCreat()}>Message App test</button>
   </Panel>
+  </div>
 );
 
-    class SmartUser extends Component {
-        componentWillMount() {
-            const {id, load} = this.props;
-            // Et voila un load !
-            load({id});
-        }
+class SmartUser extends PureComponent {
+    componentWillMount() {
+        const {id, load} = this.props;
+        // Et voila un load !
+        load({id});
+    }
 
-        render() {
-            const {fieldFor} = this.props;
-            return (
-                <User fieldFor={fieldFor} { ...this.props}/>
-            );
-        }
-    };
+    render() {
+        const {fieldFor} = this.props;
+        return (
+            <User fieldFor={fieldFor} { ...this.props}/>
+        );
+    }
+};
 
-    User.displayName = 'SmartUser ';
+User.displayName = 'SmartUser ';
 
     const formConfig = {
         formKey: 'userForm',
