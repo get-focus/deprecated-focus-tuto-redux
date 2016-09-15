@@ -7,17 +7,10 @@ import {connect} from 'react-redux';
 import Panel from 'focus-components/panel';
 import compose from 'lodash/flowRight';
 import {confirm} from 'focus-application/lib/confirm/confirm-actions';
+import {pushMessage} from 'focus-application/lib/messages/messages-actions';
 import Input from 'focus-components/input-text';
-let msgId = 0;
 
-const msgCreat = () => {
-  msgId++;
-  return {
-    type: 'PUSH_MESSAGE',
-    message:{id: `msg_${msgId}`, type: 'info', content: `Hello content ${msgId}`}
-  };
-}
-const User = ({fieldFor, confirm, msgCreat, ...otherProps}) => (
+const User = ({fieldFor, confirm, pushMessage, ...otherProps}) => (
   <div>
   Bien le bonjour
   <Panel title='User' {...otherProps}>
@@ -29,7 +22,7 @@ const User = ({fieldFor, confirm, msgCreat, ...otherProps}) => (
       reject: err =>console.log('ko', err)
     })}>Confirm test</button>
 
-    <button onClick={() => msgCreat()}>Message App test</button>
+    <button onClick={() => pushMessage({type: 'info', content: `Hello content`})}>Message App test</button>
   </Panel>
   </div>
 );
@@ -68,7 +61,7 @@ const ConnectedUserForm = compose(
   fake tricks to extract dispatch into the props.
   QUestion => @Ephrame should this be provided by the form connect ?
   */
-  connect(null, {confirm, msgCreat })(SmartUser)
+  connect(null, {confirm, pushMessage })(SmartUser)
 );
 
 
