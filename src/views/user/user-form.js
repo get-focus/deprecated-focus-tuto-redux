@@ -24,6 +24,10 @@ const User = ({fieldFor, confirm, pushMessage, ...otherProps}) => (
 
     <button onClick={() => pushMessage({type: 'info', content: `Hello content`})}>Message App test</button>
   </Panel>
+  <div style={{height: 300, with: '100%'}}>Scroll</div>
+  <div style={{height: 300, with: '100%'}}>Scroll</div>
+  <div style={{height: 300, with: '100%'}}>Scroll</div>
+  <div style={{height: 300, with: '100%'}}>Scroll</div>
   </div>
 );
 
@@ -52,6 +56,7 @@ User.displayName = 'SmartUser ';
         nonValidatedFields: ['user.firstName'],
         mapDispatchToProps: {confirm, pushMessage}
         // mapDispatchToProps: dispatch => {confirm: (...args)=> dispatch(confirm(...args)) }
+        // Up to you to choose the easiest way :+1:
         // equivalent to connect(null, {confirm, pushMessage })(SmartUser)
     };
 

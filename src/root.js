@@ -17,8 +17,6 @@ import SelectComponent from 'focus-components/select-mdl';
 import SelectComponentDisplay from 'focus-components/input-display/checkbox';
 
 
-
-
 const RootPure = ({store}) => /*On place le provider de store au plus haut afin de pouvoir injecter des informations du store dans toute l'applciation.*/
 <StoreProvider store={store}>
     <MetadataProvider definitions={definitions} domains={domains}>
