@@ -49,7 +49,10 @@ User.displayName = 'SmartUser ';
         entityPathArray: ['user'],
         loadAction: loadUserAction,
         saveAction: saveUserAction,
-        nonValidatedFields: ['user.firstName']
+        nonValidatedFields: ['user.firstName'],
+        mapDispatchToProps: {confirm, pushMessage}
+        // mapDispatchToProps: dispatch => {confirm: (...args)=> dispatch(confirm(...args)) }
+        // equivalent to connect(null, {confirm, pushMessage })(SmartUser)
     };
 
 const ConnectedUserForm = compose(
@@ -61,7 +64,8 @@ const ConnectedUserForm = compose(
   fake tricks to extract dispatch into the props.
   QUestion => @Ephrame should this be provided by the form connect ?
   */
-  connect(null, {confirm, pushMessage })(SmartUser)
+  //connect(null, {confirm, pushMessage })(SmartUser)
+  SmartUser
 );
 
 
