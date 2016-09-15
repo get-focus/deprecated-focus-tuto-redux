@@ -1,14 +1,19 @@
 import React, {PureComponent, PropTypes} from 'react';
+import compose from 'lodash/flowRight';
 import {connect as connectToForm } from 'focus-graph/behaviours/form';
 import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
 import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
-import {loadUserAction, saveUserAction} from '../../actions/user-actions';
 import {connect} from 'react-redux';
 import Panel from 'focus-components/panel';
-import compose from 'lodash/flowRight';
+
 import {confirm} from 'focus-application/lib/confirm/confirm-actions';
+import {injectBarContentSummaryHeader, injectBarContentExpandedHeader, triggerPosition} from 'focus-application/lib/header/header-actions';
 import {pushMessage} from 'focus-application/lib/messages/messages-actions';
 import Input from 'focus-components/input-text';
+
+import {ExpandedUserHeader,SummaryUserHeader} from './user-header';
+
+import {loadUserAction, saveUserAction} from '../../actions/user-actions';
 
 const User = ({fieldFor, confirm, pushMessage, ...otherProps}) => (
   <div>
@@ -33,11 +38,22 @@ const User = ({fieldFor, confirm, pushMessage, ...otherProps}) => (
 
 class SmartUser extends PureComponent {
     componentWillMount() {
-        const {id, load} = this.props;
+        const {id, load, injectBarContentSummaryHeader,injectBarContentExpandedHeader, triggerPosition} = this.props;
+
+        // Header injection on mount
+        injectBarContentSummaryHeader(SummaryUserHeader);
+        injectBarContentExpandedHeader(ExpandedUserHeader);
+
+        // have an always closed header
+        // triggerPosition(0);
+
         // Et voila un load !
         load({id});
     }
-
+    componentWillUnMount(){
+      injectBarContentSummaryHeader(null);
+      injectBarContentExpandedHeader(null);
+    }
     render() {
         const {fieldFor} = this.props;
         return (
@@ -54,7 +70,8 @@ User.displayName = 'SmartUser ';
         loadAction: loadUserAction,
         saveAction: saveUserAction,
         nonValidatedFields: ['user.firstName'],
-        mapDispatchToProps: {confirm, pushMessage}
+        mapDispatchToProps: {confirm, pushMessage, injectBarContentSummaryHeader,
+injectBarContentExpandedHeader, triggerPosition}
         // mapDispatchToProps: dispatch => {confirm: (...args)=> dispatch(confirm(...args)) }
         // Up to you to choose the easiest way :+1:
         // equivalent to connect(null, {confirm, pushMessage })(SmartUser)

@@ -1,10 +1,25 @@
 import React from 'react';
+import  {compose} from 'redux';
+import {connect as connectToState} from 'react-redux';
+import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
+import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
+import {selectFieldsByFormKey} from 'focus-graph/store/create-store';
 
-
-function ExpandedUserHeader({fieldFor}){
+function PureExpandedUserHeader({textFor}){
   return <div className='ExpandedUserHeader'>
-      {fieldFor('uuid', {entityPath: 'user'})}
-      {fieldFor('firstName', {entityPath: 'user'})}
-      {fieldFor('lastName', {entityPath: 'user'})}
+      {textFor('uuid', {entityPath: 'user'})}
+      {textFor('firstName', {entityPath: 'user'})}
+      {textFor('lastName', {entityPath: 'user'})}
   </div>
 };
+export const ExpandedUserHeader = compose(
+    connectToState(selectFieldsByFormKey('userForm')),
+    connectToMetadata(['user']),
+    connectToFieldHelpers()
+)(PureExpandedUserHeader);
+
+export const SummaryUserHeader = compose(
+    connectToState(selectFieldsByFormKey('userForm')),
+    connectToMetadata(['user']),
+    connectToFieldHelpers()
+)(PureExpandedUserHeader);

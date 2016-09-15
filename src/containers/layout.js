@@ -48,7 +48,7 @@ function AppLayout(props){
         <h1>Bienvenue dans ce superbe tutoriel dd{props.name} </h1>
         {/* On récupère les définitions dans les props*/}
         {props.children}
-        {/* <StateDisplayer/ > */}
+        <StateDisplayer/ > 
     </Layout>
   </ConnectedScrollTrigger>
 )
