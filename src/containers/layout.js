@@ -7,14 +7,14 @@ import ScrollTrigger from 'focus-application/lib/layout/scroll-trigger';
 import LoadingBar from 'focus-application/lib/fetch'
 import ConfirmWrapper from 'focus-application/lib/confirm';
 import MessageCenter from 'focus-application/lib/messages';
-import AppHeader from 'focus-application/lib/header';
+import Header from 'focus-application/lib/header';
 import DevTools from './dev-tools'
 
 // focus-components
 import ConfirmationPopin from 'focus-components/confirmation-popin';
 import SnackBar from 'focus-components/snackbar';
 import Animation from 'focus-components/animation';
-
+import ContentActionsComponent from 'focus-components/header-actions';
 // This should be done by default by focus-application
 import { headerIsExpandedSelector} from 'focus-application/lib/header/header-reducer';
 import { expandHeader, unExpandHeader} from 'focus-application/lib//header/header-actions'
@@ -42,6 +42,7 @@ const AppMessages = props => <MessageCenter {...props} MessageComponent={SB} />
 
 const StateDisplayer = connectToStore(s => s)(props => <pre><code>{JSON.stringify(props, null, 4)}</code></pre>)
 
+const AppHeader = props => <Header {...props} ContentActionsComponent={ContentActionsComponent} />
 
 //confirmation-popin
 
@@ -60,7 +61,7 @@ function AppLayout(props){
 }
 
 AppLayout.defaultProps = {
-  hasDevtools: false
+  hasDevtools: true
 }
 
 export default AppLayout

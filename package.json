@@ -114,8 +114,8 @@
     "webpack-focus": "^0.12.2"
   },
   "dependencies": {
-    "focus-application": "0.0.9",
-    "focus-components": "^3.0.0-beta25",
+    "focus-application": "0.0.11",
+    "focus-components": "^3.0.0-beta32",
     "focus-graph": "^0.2.3-beta5",
     "material-design-icons-iconfont": "2.0.4",
     "material-design-lite": "1.2.1",

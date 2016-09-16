@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import Panel from 'focus-components/panel';
 
 import {confirm} from 'focus-application/lib/confirm/confirm-actions';
-import {injectBarContentSummaryHeader, injectBarContentExpandedHeader, triggerPosition} from 'focus-application/lib/header/header-actions';
+import {injectBarContentSummaryHeader, injectBarContentExpandedHeader, triggerPosition, injectActionHeader} from 'focus-application/lib/header/header-actions';
 import {pushMessage} from 'focus-application/lib/messages/messages-actions';
 import Input from 'focus-components/input-text';
 
@@ -15,7 +15,7 @@ import {ExpandedUserHeader,SummaryUserHeader} from './user-header';
 
 import {loadUserAction, saveUserAction} from '../../actions/user-actions';
 
-const User = ({fieldFor, confirm, pushMessage, ...otherProps}) => (
+const User = ({fieldFor, confirm, pushMessage,injectActionHeader, ...otherProps}) => (
   <div>
   Bien le bonjour
   <Panel title='User' {...otherProps}>
@@ -39,12 +39,12 @@ const User = ({fieldFor, confirm, pushMessage, ...otherProps}) => (
 
 class SmartUser extends PureComponent {
     componentWillMount() {
-        const {id, load, injectBarContentSummaryHeader,injectBarContentExpandedHeader, triggerPosition} = this.props;
+        const {id, load, injectBarContentSummaryHeader,injectBarContentExpandedHeader, triggerPosition, injectActionHeader} = this.props;
 
         // Header injection on mount
         injectBarContentSummaryHeader(SummaryUserHeader);
         injectBarContentExpandedHeader(ExpandedUserHeader);
-
+        injectActionHeader({primary: [{action: () => console.log('Primaire'), label: 'Primaire', icon: 'home'}], secondary: [{action: () => console.log('secondary'), label: 'Secondaire', icon: 'home'}]})
         // have an always closed header
         // triggerPosition(0);
 
@@ -72,7 +72,7 @@ User.displayName = 'SmartUser ';
         saveAction: saveUserAction,
         nonValidatedFields: ['user.firstName'],
         mapDispatchToProps: {confirm, pushMessage, injectBarContentSummaryHeader,
-injectBarContentExpandedHeader, triggerPosition}
+injectBarContentExpandedHeader, triggerPosition, injectActionHeader}
         // mapDispatchToProps: dispatch => {confirm: (...args)=> dispatch(confirm(...args)) }
         // Up to you to choose the easiest way :+1:
         // equivalent to connect(null, {confirm, pushMessage })(SmartUser)
