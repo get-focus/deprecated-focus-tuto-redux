@@ -1,4 +1,3 @@
-import builder from 'focus-graph/store/builder';
 import rootReducer from '../reducer';
 import {INPUT_CHANGE, INPUT_ERROR, MY_ACTION} from 'focus-graph/actions/input';
 

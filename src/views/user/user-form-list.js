@@ -5,16 +5,18 @@ import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
 import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
 import {loadFinanceAction, saveFinanceAction} from '../../actions/finance-actions';
 //import {selectData} from 'focus-graph/store/create-store'
-import Panel from 'focus-graph/components/panel';
+import Panel from 'focus-components/panel';
 import compose from 'lodash/flowRight';
 import FinancialMoveLine from './financialMoveLine'
+
+import ScrollSpyContainer from 'focus-components/scrollspy-container'
 
 const User = ({fieldFor,listFor, rawInputValue, victoire, echec,  ...otherProps}) => (
   <Panel title={victoire ? "User " +victoire : "User " +echec} {...otherProps}>
       {fieldFor('name', {entityPath: 'finance'})}
       {fieldFor('amount', {entityPath: 'finance'})}
+      {fieldFor('date', {entityPath: 'finance'})}
       {fieldFor('test', {entityPath: 'finance'})}
-      {listFor('moves', { redirectEntityPath: ['financialMove'], LineComponent: FinancialMoveLine})}
   </Panel>
 )
 
@@ -36,7 +38,10 @@ class SmartUser extends Component {
     render() {
         const {fieldFor, list} = this.props;
         return (
-          <User fieldFor={fieldFor} listFor={list} { ...this.props}/>
+          <ScrollSpyContainer>
+            <User fieldFor={fieldFor} listFor={list} { ...this.props}/>
+            <User fieldFor={fieldFor} listFor={list} { ...this.props}/>
+          </ScrollSpyContainer>
         );
     }
 };

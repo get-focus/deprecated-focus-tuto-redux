@@ -1,8 +1,7 @@
 export const user = {
   uuid: {
     domain: 'DO_ID',
-    isRequired: true
-  },
+    isRequired: true  },
   firstName: {
     domain: 'DO_TEXTE',
     isRequired: true
@@ -41,6 +40,10 @@ export const finance = {
   currency:  {
     domain: 'DO_SYMBOL',
     isRequired: true
+  },
+  date: {
+    domain: 'DO_DATE',
+    isRequired: false
   },
   test : {
     domain: 'DO_CHECKBOX',

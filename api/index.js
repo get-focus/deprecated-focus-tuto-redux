@@ -51,6 +51,7 @@ function createComplexEntity(i){
       amount: faker.finance.amount(),
       currency: faker.finance.currencyName(),
       test: true,
+      date: new Date(),
       moves: _createFinancialMoves()
     }
   }

@@ -1,31 +1,43 @@
-import Checkbox from 'focus-components/components/input/checkbox'
+import React, {Component, PropTypes} from 'react';
+
+
+import Checkbox from 'focus-components/input-checkbox'
+import InputDate from 'focus-components/input-date'
+import InputText from 'focus-components/input-text'
+import InputSelect from 'focus-components/select'
 
 export const DO_ID = {
-  type: 'text',
-  //InputComponent: (props) => <div>DO_ID {JSON.stringify(props)}</div>
+    type: 'text',
+    InputComponent: props => <div>fndssn</div>
+    //InputComponent: (props) => <div>DO_ID {JSON.stringify(props)}</div>
 }
 
 export const DO_TEXTE = {
-  type: 'text',
-  //InputComponent: (props) => <div>DO_TEXTE {JSON.stringify(props)}</div>
+    type: 'text'
+    //InputComponent: (props) => <div>DO_TEXTE {JSON.stringify(props)}</div>
 }
-export const DO_AMOUNT = {
-  type: 'number',
-  //InputComponent: (props) => <div>DO_AMOUNT {JSON.stringify(props)}</div>
-}
-export const DO_SYMBOL = {
-  type: 'text',
 
-  //InputComponent: (props) => <div>DO_SYMBOL {JSON.stringify(props)}</div>
+export const DO_DATE = {
+    type: 'text',
+    InputComponent: InputDate
 }
+
+export const DO_AMOUNT = {
+    type: 'number'
+}
+
+export const DO_SYMBOL = {
+    type: 'text'
+}
+
 export const DO_CODE = {
-  type: 'text',
-  //InputComponent: (props) => <div>DO_CODE {JSON.stringify(props)}</div>
+    type: 'text'
 }
+
 export const DO_MONTANT = {
-  type: 'number',
-  //InputComponent: (props) => <div>DO_MONTANT {JSON.stringify(props)}</div>
+    type: 'number'
 }
+
 export const DO_CIVILITE= {
     type: 'text',
     validators: [{
@@ -33,11 +45,11 @@ export const DO_CIVILITE= {
         options: {
             maxLength: 200
         }
-    }]
+    }],
+    SelectComponent: InputSelect
 }
-import React from 'react'
+
 export const DO_CHECKBOX = {
-  type: 'boolean',
-  InputComponent: Checkbox,
-  DisplayComponent: props => <div>Checkbox {JSON.stringify(props)}</div>
+    type: 'boolean',
+    InputComponent: Checkbox
 }
