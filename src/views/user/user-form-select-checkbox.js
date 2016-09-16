@@ -19,12 +19,10 @@ class UserForm extends Component {
 
     render() {
         const { fields, fieldFor, selectFor} = this.props;
-        console.log(this.props)
         const civilityField = find(fields, {name: 'civility', entityPath: 'user'});
         return (
             <Panel title='User with more details for Mrs' {...this.props}>
                 {fieldFor('uuid', {entityPath: 'user'})}
-                {fieldFor('style',  {entityPath: 'user'})}
                 {selectFor('civility', {entityPath: 'user', masterDatum: 'civility'})}
                 {civilityField && civilityField.rawInputValue === 'MRS' && fieldFor('firstName', {entityPath: 'user'})}
                 {civilityField && civilityField.rawInputValue === 'MRS' && fieldFor('lastName', {entityPath: 'user'})}

@@ -1,10 +1,14 @@
+import React, {Component, PropTypes} from 'react';
+
+
 import Checkbox from 'focus-components/input-checkbox'
 import InputDate from 'focus-components/input-date'
 import InputText from 'focus-components/input-text'
+import InputSelect from 'focus-components/select'
 
 export const DO_ID = {
     type: 'text',
-    InputComponent: InputText
+    InputComponent: props => <div>fndssn</div>
     //InputComponent: (props) => <div>DO_ID {JSON.stringify(props)}</div>
 }
 
@@ -41,7 +45,8 @@ export const DO_CIVILITE= {
         options: {
             maxLength: 200
         }
-    }]
+    }],
+    SelectComponent: InputSelect
 }
 
 export const DO_CHECKBOX = {
