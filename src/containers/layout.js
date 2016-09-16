@@ -21,11 +21,16 @@ import { expandHeader, unExpandHeader} from 'focus-application/lib//header/heade
 const ConnectedScrollTrigger = connectToStore(headerIsExpandedSelector,{expandHeader, unExpandHeader})(ScrollTrigger);
 
 const SB = props => {
-  const {id,content, title, deleteMessage} = props;
+  const {id,content, title, deleteMessage, actionHandler, actionText} = props;
 
   return (
     <div className="mdl-js-snackbar mdl-snackbar mdl-snackbar--active animated slideInUp" data-upgraded="MaterialSnackbar" aria-hidden="false">
       <div className="mdl-snackbar__text">{props.content}</div>
+      {actionHandler && actionText &&
+                <button className='mdl-snackbar__action' type='button' onClick={() =>{
+                actionHandler(props); deleteMessage({id});
+                }}>{actionText}</button>
+            }
       <button className="mdl-snackbar__action" type="button" onClick={() => deleteMessage({id})}>Close</button>
     </div>
   );
@@ -33,7 +38,7 @@ const SB = props => {
 
 // Wrap application component with focus components
 const ConfirmComponent = props => <ConfirmWrapper {...props}  ConfirmationModal={ConfirmationPopin}/>
-const AppMessages = props => <MessageCenter {...props} MessageComponent={SnackBar} />
+const AppMessages = props => <MessageCenter {...props} MessageComponent={SB} />
 
 const StateDisplayer = connectToStore(s => s)(props => <pre><code>{JSON.stringify(props, null, 4)}</code></pre>)
 
@@ -48,7 +53,7 @@ function AppLayout(props){
         <h1>Bienvenue dans ce superbe tutoriel dd{props.name} </h1>
         {/* On récupère les définitions dans les props*/}
         {props.children}
-        <StateDisplayer/ > 
+        <StateDisplayer/ >
     </Layout>
   </ConnectedScrollTrigger>
 )

@@ -27,7 +27,8 @@ const User = ({fieldFor, confirm, pushMessage, ...otherProps}) => (
       reject: err =>console.log('ko', err)
     })}>Confirm test</button>
 
-    <button onClick={() => pushMessage({type: 'info', content: `Hello content`})}>Message App test</button>
+    <button onClick={() => pushMessage({type: 'info', content: `Hello content`, actionHandler: () => alert('pute'),
+  actionText: "Old Guy"})}>Message App test</button>
   </Panel>
   <div style={{height: 300, with: '100%'}}>Scroll</div>
   <div style={{height: 300, with: '100%'}}>Scroll</div>
