@@ -2,12 +2,12 @@ import React from 'react';
 import {connect as connectToStore} from 'react-redux';
 
 // focus-application
-import Layout from 'focus-application/lib/layout'
-import ScrollTrigger from 'focus-application/lib/layout/scroll-trigger';
-import LoadingBar from 'focus-application/lib/fetch'
-import ConfirmWrapper from 'focus-application/lib/confirm';
-import MessageCenter from 'focus-application/lib/messages';
-import Header from 'focus-application/lib/header';
+import Layout from 'focus-application/layout'
+import ScrollTrigger from 'focus-application/layout/scroll-trigger';
+import LoadingBar from 'focus-application/fetch'
+import ConfirmWrapper from 'focus-application/confirm';
+import MessageCenter from 'focus-application/messages';
+import Header from 'focus-application/header';
 import DevTools from './dev-tools'
 
 // focus-components
@@ -16,8 +16,8 @@ import SnackBar from 'focus-components/snackbar';
 import Animation from 'focus-components/animation';
 import ContentActionsComponent from 'focus-components/header-actions';
 // This should be done by default by focus-application
-import { headerIsExpandedSelector} from 'focus-application/lib/header/header-reducer';
-import { expandHeader, unExpandHeader} from 'focus-application/lib//header/header-actions'
+import { headerIsExpandedSelector} from 'focus-application/header/header-reducer';
+import { expandHeader, unExpandHeader} from 'focus-application//header/header-actions'
 const ConnectedScrollTrigger = connectToStore(headerIsExpandedSelector,{expandHeader, unExpandHeader})(ScrollTrigger);
 
 const SB = props => {

@@ -1,4 +1,4 @@
-import createfocusFetchProxy from 'focus-application/lib/fetch/fetch-proxy'
+import createfocusFetchProxy from 'focus-application/fetch/fetch-proxy'
 let fetch;
 
 export const initFetch =  dispatch => {
