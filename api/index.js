@@ -18,7 +18,7 @@ let adressJSON = [{
 ];
 function createEntity(i){
   return        {
-          uuid: faker.random.uuid(),
+          uuid: '12'+i,
           firstName: faker.name.firstName(),
           lastName: faker.name.lastName(),
           style: true
@@ -28,7 +28,7 @@ function createEntity(i){
 }
 //let entityJSON = [];
 for(let i = 0; i < NB_GENERATED_ENTITY; i++){
-   entityJSON.push(createEntity());
+   entityJSON.push(createEntity(i));
 }
 let complexJSON = [];
 for(let i = 0; i < NB_GENERATED_ENTITY; i++){
