@@ -17,7 +17,7 @@ import Animation from 'focus-components/animation';
 import ContentActionsComponent from 'focus-components/header-actions';
 // This should be done by default by focus-application
 import { headerIsExpandedSelector} from 'focus-application/header/header-reducer';
-import { expandHeader, unExpandHeader} from 'focus-application//header/header-actions'
+import { expandHeader, unExpandHeader} from 'focus-application/header/header-actions'
 const ConnectedScrollTrigger = connectToStore(headerIsExpandedSelector,{expandHeader, unExpandHeader})(ScrollTrigger);
 
 const SB = props => {

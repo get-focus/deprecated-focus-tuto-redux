@@ -21,9 +21,9 @@ const User = ({fieldFor,listFor, ...otherProps}) => (
 
 class SmartUserFinance extends Component {
     componentWillMount() {
-        const {id, load} = this.props;
+        const {id, load, clear} = this.props;
         // Et voila un load !
-        load({id});
+        id ? load({id}) : clear();
     }
 
     render() {
