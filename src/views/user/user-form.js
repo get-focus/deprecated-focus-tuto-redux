@@ -6,9 +6,9 @@ import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
 import {connect} from 'react-redux';
 import Panel from 'focus-components/panel';
 
-import {confirm} from 'focus-application/lib/confirm/confirm-actions';
-import {injectBarContentSummaryHeader, injectBarContentExpandedHeader, triggerPosition, injectActionHeader} from 'focus-application/lib/header/header-actions';
-import {pushMessage} from 'focus-application/lib/messages/messages-actions';
+import {confirm} from 'focus-application/confirm/confirm-actions';
+import {injectBarContentSummaryHeader, injectBarContentExpandedHeader, triggerPosition, injectActionHeader} from 'focus-application/header/header-actions';
+import {pushMessage} from 'focus-application/messages/messages-actions';
 import Input from 'focus-components/input-text';
 
 import {ExpandedUserHeader,SummaryUserHeader} from './user-header';
