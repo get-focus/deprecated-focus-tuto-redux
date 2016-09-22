@@ -16,54 +16,54 @@ import {ExpandedUserHeader,SummaryUserHeader} from './user-header';
 import {loadUserAction, saveUserAction} from '../../actions/user-actions';
 
 const User = ({fieldFor, confirm, pushMessage,injectActionHeader, ...otherProps}) => (
-  <div>
-  Bien le bonjour
-  <Panel title='User' {...otherProps}>
-      {fieldFor('uuid', {entityPath: 'user', options: {InputComponent: props => <div>Looooool</div>}})}
-      {fieldFor('firstName', {entityPath: 'user'})}
-      {fieldFor('lastName', {entityPath: 'user'})}
-      <button onClick={ () => confirm('Amelie :pikax: Thomas', {
-      resolve: d => console.log('ok', d),
-      reject: err =>console.log('ko', err)
-    })}>Confirm test</button>
+    <div>
+        Bien le bonjour
+        <Panel title='User' {...otherProps}>
+            {fieldFor('uuid', {entityPath: 'user', options: {InputComponent: props => <div>Looooool</div>}})}
+            {fieldFor('firstName', {entityPath: 'user'})}
+            {fieldFor('lastName', {entityPath: 'user'})}
+            <button onClick={ () => confirm('Amelie :pikax: Thomas', {
+                    resolve: d => console.log('ok', d),
+                    reject: err =>console.log('ko', err)
+                })}>Confirm test</button>
 
-    <button onClick={() => pushMessage({type: 'info', content: `Hello content`, actionHandler: () => alert('pute'),
-  actionText: "Old Guy"})}>Message App test</button>
-  </Panel>
-  <div style={{height: 300, with: '100%'}}>Scroll</div>
-  <div style={{height: 300, with: '100%'}}>Scroll</div>
-  <div style={{height: 300, with: '100%'}}>Scroll</div>
-  <div style={{height: 300, with: '100%'}}>Scroll</div>
-  </div>
-);
+                <button onClick={() => pushMessage({type: 'info', content: `Hello content`, actionHandler: () => alert('pute'),
+                    actionText: "Old Guy"})}>Message App test</button>
+            </Panel>
+            <div style={{height: 300, with: '100%'}}>Scroll</div>
+            <div style={{height: 300, with: '100%'}}>Scroll</div>
+            <div style={{height: 300, with: '100%'}}>Scroll</div>
+            <div style={{height: 300, with: '100%'}}>Scroll</div>
+        </div>
+    );
 
-class SmartUser extends PureComponent {
-    componentWillMount() {
-        const {id, load, injectBarContentSummaryHeader,injectBarContentExpandedHeader, triggerPosition, injectActionHeader} = this.props;
+    class SmartUser extends PureComponent {
+        componentWillMount() {
+            const {id, load, injectBarContentSummaryHeader,injectBarContentExpandedHeader, triggerPosition, injectActionHeader} = this.props;
 
-        // Header injection on mount
-        injectBarContentSummaryHeader(SummaryUserHeader);
-        injectBarContentExpandedHeader(ExpandedUserHeader);
-        injectActionHeader({primary: [{action: () => console.log('Primaire'), label: 'Primaire', icon: 'home'}], secondary: [{action: () => console.log('secondary'), label: 'Secondaire', icon: 'home'}]})
-        // have an always closed header
-        // triggerPosition(0);
+            // Header injection on mount
+            injectBarContentSummaryHeader(SummaryUserHeader);
+            injectBarContentExpandedHeader(ExpandedUserHeader);
+            injectActionHeader({primary: [{action: () => console.log('Primaire'), label: 'Primaire', icon: 'home'}], secondary: [{action: () => console.log('secondary'), label: 'Secondaire', icon: 'home'}]})
+            // have an always closed header
+            // triggerPosition(0);
 
-        // Et voila un load !
-        load({id});
-    }
-    componentWillUnMount(){
-      injectBarContentSummaryHeader(null);
-      injectBarContentExpandedHeader(null);
-    }
-    render() {
-        const {fieldFor} = this.props;
-        return (
-            <User fieldFor={fieldFor} { ...this.props}/>
-        );
-    }
-};
+            // Et voila un load !
+            load({id});
+        }
+        componentWillUnMount(){
+            injectBarContentSummaryHeader(null);
+            injectBarContentExpandedHeader(null);
+        }
+        render() {
+            const {fieldFor} = this.props;
+            return (
+                <User fieldFor={fieldFor} { ...this.props}/>
+            );
+        }
+    };
 
-User.displayName = 'SmartUser ';
+    User.displayName = 'SmartUser ';
 
     const formConfig = {
         formKey: 'userForm',
@@ -72,24 +72,24 @@ User.displayName = 'SmartUser ';
         saveAction: saveUserAction,
         nonValidatedFields: ['user.firstName'],
         mapDispatchToProps: {confirm, pushMessage, injectBarContentSummaryHeader,
-injectBarContentExpandedHeader, triggerPosition, injectActionHeader}
-        // mapDispatchToProps: dispatch => {confirm: (...args)=> dispatch(confirm(...args)) }
-        // Up to you to choose the easiest way :+1:
-        // equivalent to connect(null, {confirm, pushMessage })(SmartUser)
-    };
+            injectBarContentExpandedHeader, triggerPosition, injectActionHeader}
+            // mapDispatchToProps: dispatch => {confirm: (...args)=> dispatch(confirm(...args)) }
+            // Up to you to choose the easiest way :+1:
+            // equivalent to connect(null, {confirm, pushMessage })(SmartUser)
+        };
 
-const ConnectedUserForm = compose(
-    connectToMetadata(['user']),
-    connectToForm(formConfig),
-    connectToFieldHelpers()
-)(
-  /*
-  fake tricks to extract dispatch into the props.
-  QUestion => @Ephrame should this be provided by the form connect ?
-  */
-  //connect(null, {confirm, pushMessage })(SmartUser)
-  SmartUser
-);
+        const ConnectedUserForm = compose(
+            connectToMetadata(['user']),
+            connectToForm(formConfig),
+            connectToFieldHelpers()
+        )(
+            /*
+            fake tricks to extract dispatch into the props.
+            QUestion => @Ephrame should this be provided by the form connect ?
+            */
+            //connect(null, {confirm, pushMessage })(SmartUser)
+            SmartUser
+        );
 
 
-    export default ConnectedUserForm;
+        export default ConnectedUserForm;

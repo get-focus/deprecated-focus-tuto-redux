@@ -1,8 +1,8 @@
 import 'babel-polyfill';
 import 'focus-components/style';
 import 'focus-graph/src/style/field.scss';
-import 'focus-application/layout/layout.scss'
-import 'focus-application/header/header.scss'
+import 'focus-application/layout/index.scss'
+import 'focus-application/header/index.scss'
 import {init as initTranslation} from 'focus-components/translation';
 
 //------------------------------
