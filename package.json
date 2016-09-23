@@ -116,8 +116,9 @@
   },
   "dependencies": {
     "focus-application": "^3.0.0-rc5",
-    "focus-components": "^3.0.0-rc1",
+    "focus-components": "^3.0.0-rc11",
     "focus-graph": "^3.0.0-rc1",
+    "focus-search": "^3.0.0-rc4",
     "material-design-icons-iconfont": "2.0.4",
     "material-design-lite": "1.2.1",
     "react": "^15.3.1",
