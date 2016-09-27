@@ -1,11 +1,21 @@
 import {actionBuilder} from 'focus-graph/actions/entity-actions-builder';
-import {loadUser, saveUser} from '../services/user-service';
+import {loadUser, saveUser, loadErrorUser} from '../services/user-service';
 
 // Création de l'action de Load via un tableau de node pour le store redux, un type d'action et un service associé
 const _loadUserAction = actionBuilder({names: ['user' ], type: 'load', service: loadUser});
 //En retour on a l'action à appelé dans la vue, et les types des actions redux crées à donner au reduce redux
 export const loadUserTypes = _loadUserAction.types;
 export const loadUserAction = _loadUserAction.action;
+
+
+// Création de l'action de Load via un tableau de node pour le store redux, un type d'action et un service associé
+const _loadUserErrorAction = actionBuilder({names: ['user' ], type: 'load', service: loadErrorUser});
+//En retour on a l'action à appelé dans la vue, et les types des actions redux crées à donner au reduce redux
+export const loadUserErrorTypes = _loadUserErrorAction.types;
+export const loadUserErrorAction = _loadUserErrorAction.action;
+
+
+
 
 
 // Création de l'action de Load via un tableau de node pour le store redux, un type d'action et un service associé

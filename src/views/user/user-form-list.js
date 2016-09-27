@@ -12,12 +12,18 @@ import FinancialMoveLine from './financialMoveLine'
 import ScrollSpyContainer from 'focus-components/scrollspy-container'
 
 const User = ({fieldFor,listFor, rawInputValue, victoire, echec,  ...otherProps}) => (
+  <div>Yogfhg
   <Panel title={victoire ? "User " +victoire : "User " +echec} {...otherProps}>
       {fieldFor('name', {entityPath: 'finance'})}
       {fieldFor('amount', {entityPath: 'finance'})}
       {fieldFor('date', {entityPath: 'finance'})}
-      {fieldFor('test', {entityPath: 'finance'})}
+      {listFor('moves', { redirectEntityPath: ['financialMove'], LineComponent: FinancialMoveLine})}
+
   </Panel>
+
+
+  </div>
+
 )
 
 const selectData = name => (state ={}) => {
@@ -36,11 +42,10 @@ class SmartUser extends Component {
     }
 
     render() {
-        const {fieldFor, list} = this.props;
+        const {fieldFor} = this.props;
         return (
           <ScrollSpyContainer>
-            <User fieldFor={fieldFor} listFor={list} { ...this.props}/>
-            <User fieldFor={fieldFor} listFor={list} { ...this.props}/>
+            <User fieldFor={fieldFor}  { ...this.props}/>
           </ScrollSpyContainer>
         );
     }

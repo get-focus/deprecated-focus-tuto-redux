@@ -42,8 +42,8 @@ class SmartUser extends PureComponent {
         const {id, load, injectBarContentSummaryHeader,injectBarContentExpandedHeader, triggerPosition, injectActionHeader} = this.props;
 
         // Header injection on mount
-        injectBarContentSummaryHeader(SummaryUserHeader);
-        injectBarContentExpandedHeader(ExpandedUserHeader);
+        injectBarContentSummaryHeader(props => <div>Yooooooo</div>);
+        injectBarContentExpandedHeader(props => <div>Yooooooooooooo</div>);
         injectActionHeader({primary: [{action: () => console.log('Primaire'), label: 'Primaire', icon: 'home'}], secondary: [{action: () => console.log('secondary'), label: 'Secondaire', icon: 'home'}]})
         // have an always closed header
         // triggerPosition(0);
@@ -51,9 +51,12 @@ class SmartUser extends PureComponent {
         // Et voila un load !
         load({id});
     }
-    componentWillUnMount(){
-      injectBarContentSummaryHeader(null);
-      injectBarContentExpandedHeader(null);
+    componentWillUnmount(){
+      console.log('Je vais me démonter ! !')
+      injectBarContentSummaryHeader(props => <div>Lalallalala</div>);
+      injectBarContentExpandedHeader(props => <div>Lalallalala</div>);
+      injectActionHeader({})
+
     }
     render() {
         const {fieldFor} = this.props;
@@ -71,8 +74,7 @@ User.displayName = 'SmartUser ';
         loadAction: loadUserAction,
         saveAction: saveUserAction,
         nonValidatedFields: ['user.firstName'],
-        mapDispatchToProps: {confirm, pushMessage, injectBarContentSummaryHeader,
-injectBarContentExpandedHeader, triggerPosition, injectActionHeader}
+        mapDispatchToProps: {confirm, pushMessage, injectBarContentSummaryHeader,injectBarContentExpandedHeader, triggerPosition, injectActionHeader}
         // mapDispatchToProps: dispatch => {confirm: (...args)=> dispatch(confirm(...args)) }
         // Up to you to choose the easiest way :+1:
         // equivalent to connect(null, {confirm, pushMessage })(SmartUser)

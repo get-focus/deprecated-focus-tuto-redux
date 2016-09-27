@@ -98,6 +98,13 @@ app.get(API_ROOT  + '/entity/:id', function getSingleEntity(req, res) {
   }
 );
 
+app.get(API_ROOT  + '/error', function createNotifs(req, res) {
+    res.status(403);
+    res.json({"globalErrors":[" Libelle doit être renseigné"]})
+
+  }
+);
+
 app.get(API_ROOT  + '/mixed/:id', function getSingleEntity(req, res) {
     res.json({
       user: entityJSON.find(d => d.uuid === req.params.id),

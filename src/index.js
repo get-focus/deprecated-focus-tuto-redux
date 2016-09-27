@@ -2,12 +2,20 @@ import 'babel-polyfill';
 import 'focus-components/style';
 import 'focus-graph/src/style/field.scss';
 import 'focus-application/layout/layout.scss'
-import 'focus-application/header/header.scss'
+import 'focus-application/header/index.scss'
 import {init as initTranslation} from 'focus-components/translation';
+import i18next from 'i18next';
+import frResources from './ressources/fr-FR';
 
 //------------------------------
 // INIT FOCUS TRANSLATION
-initTranslation();
+// initTranslation();
+// i18next.init({
+//     lng: 'fr-FR',
+//     resources: frResources
+// }, (err, t) => {
+//     console.info('[FOCUS-COMPONENTS] Translation initialized !');
+// });
 //------------------------------
 
 import React , {PropTypes} from 'react';
@@ -20,6 +28,12 @@ import configureStore from './store';
 import {initFetch} from './services/fetch';
 const store = configureStore();
 initFetch(store.dispatch);
+
+
+
+
+
+
 
 const renderApp = RootComponent => {
     console.info('App rendered')

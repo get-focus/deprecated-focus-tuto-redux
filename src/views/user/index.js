@@ -6,7 +6,9 @@ const routes = [
   {route: '/user/finance/120', destination: 'Form', description: 'Composant user avec un superbe form', title: 'form'},
   {route: '/user/list/120', destination: 'Custom', description: 'Composant user avec un superbe form custom', title: 'custom'},
   {route: '/user/select/120', destination: 'Custom', description: 'Composant user avec un superbe form display', title: 'display'},
-  {route: '/user/test/120', destination: 'Test', description: 'Test clean action', title: 'display'}
+  {route: '/user/test/120', destination: 'Test', description: 'Test clean action', title: 'display'},
+  {route: '/user/error', destination: 'Error', description: 'Error action', title: 'Error'}
+
 
 ];
 

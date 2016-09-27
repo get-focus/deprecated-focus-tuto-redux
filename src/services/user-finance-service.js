@@ -2,8 +2,8 @@ import fetch from './fetch';
 
 export const loadUserFinance = async ({id}) => {
     const response = await fetch(`http://localhost:9999/x/complex/${id}`)
-    const data = await response.json();
-    return data;
+    const data = await response.response.json();
+    return {...data, status : response.status };
 }
 
 export const saveUserFinance = async ({user}) => {
@@ -12,6 +12,6 @@ export const saveUserFinance = async ({user}) => {
             resolve()
         }, 1500);
     });
-    return {...finance};
+    return {...finance, status : response.status };
 
 }

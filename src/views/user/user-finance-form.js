@@ -8,6 +8,12 @@ import Panel from 'focus-components/panel';
 import compose from 'lodash/flowRight';
 import FinancialMoveLine from './financialMoveLine'
 
+import {confirm} from 'focus-application/confirm/confirm-actions';
+import {injectBarContentSummaryHeader, injectBarContentExpandedHeader, triggerPosition, injectActionHeader} from 'focus-application/header/header-actions';
+import {pushMessage} from 'focus-application/messages/messages-actions'
+
+
+
 const User = ({fieldFor,listFor, ...otherProps}) => (
   <Panel title='User' {...otherProps}>
       {fieldFor('uuid', {entityPath: 'user'})}
@@ -21,9 +27,13 @@ const User = ({fieldFor,listFor, ...otherProps}) => (
 
 class SmartUserFinance extends Component {
     componentWillMount() {
-        const {id, load, clear} = this.props;
+      const {id, load,clear, injectBarContentSummaryHeader,injectBarContentExpandedHeader, triggerPosition, injectActionHeader} = this.props;
         // Et voila un load !
         id ? load({id}) : clear();
+
+
+        // have an always closed header
+        // triggerPosition(0);
     }
 
     render() {
@@ -41,13 +51,16 @@ const formConfig = {
     entityPathArray: ['user','finance'],
     loadAction: loadUserFinanceAction,
     saveAction: saveUserFinanceAction,
-    nonValidatedFields: ['user.firstName']
+    nonValidatedFields: ['user.firstName'],
+    mapDispatchToProps: {confirm, pushMessage, injectBarContentSummaryHeader,injectBarContentExpandedHeader, triggerPosition, injectActionHeader}
+
 };
 
 const ConnectedUserForm = compose(
     connectToMetadata(['user', 'financialMove', 'finance']),
     connectToForm(formConfig),
-    connectToFieldHelpers()
+    connectToFieldHelpers(),
+
 )(SmartUserFinance );
 
 export default ConnectedUserForm;
