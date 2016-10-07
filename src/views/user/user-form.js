@@ -3,16 +3,15 @@ import compose from 'lodash/flowRight';
 import {connect as connectToForm } from 'focus-graph/behaviours/form';
 import {connect as connectToMetadata} from 'focus-graph/behaviours/metadata';
 import {connect as connectToFieldHelpers} from 'focus-graph/behaviours/field';
+import {connect as connectToHeader} from 'focus-application/behaviours/header';
 import {connect} from 'react-redux';
 import Panel from 'focus-components/panel';
 
 import {confirm} from 'focus-application/confirm/confirm-actions';
-import {injectBarContentSummaryHeader, injectBarContentExpandedHeader, triggerPosition, injectActionHeader} from 'focus-application/header/header-actions';
 import {pushMessage} from 'focus-application/messages/messages-actions';
 import Input from 'focus-components/input-text';
 
-import {ExpandedUserHeader,SummaryUserHeader} from './user-header';
-
+import {ExpandedUserHeader, SummaryUserHeader} from './user-header';
 import {loadUserAction, saveUserAction} from '../../actions/user-actions';
 
 const User = ({fieldFor, confirm, pushMessage,injectActionHeader, ...otherProps}) => (
@@ -39,21 +38,10 @@ const User = ({fieldFor, confirm, pushMessage,injectActionHeader, ...otherProps}
 
     class SmartUser extends PureComponent {
         componentWillMount() {
-            const {id, load, injectBarContentSummaryHeader,injectBarContentExpandedHeader, triggerPosition, injectActionHeader} = this.props;
-
-            // Header injection on mount
-            injectBarContentSummaryHeader(SummaryUserHeader);
-            injectBarContentExpandedHeader(ExpandedUserHeader);
-            injectActionHeader({primary: [{action: () => console.log('Primaire'), label: 'Primaire', icon: 'home'}], secondary: [{action: () => console.log('secondary'), label: 'Secondaire', icon: 'home'}]})
-            // have an always closed header
-            // triggerPosition(0);
+            const {id, load} = this.props;
 
             // Et voila un load !
             load({id});
-        }
-        componentWillUnMount(){
-            injectBarContentSummaryHeader(null);
-            injectBarContentExpandedHeader(null);
         }
         render() {
             const {fieldFor} = this.props;
@@ -71,8 +59,7 @@ const User = ({fieldFor, confirm, pushMessage,injectActionHeader, ...otherProps}
         loadAction: loadUserAction,
         saveAction: saveUserAction,
         nonValidatedFields: ['user.firstName'],
-        mapDispatchToProps: {confirm, pushMessage, injectBarContentSummaryHeader,
-            injectBarContentExpandedHeader, triggerPosition, injectActionHeader}
+        mapDispatchToProps: {confirm, pushMessage}
             // mapDispatchToProps: dispatch => {confirm: (...args)=> dispatch(confirm(...args)) }
             // Up to you to choose the easiest way :+1:
             // equivalent to connect(null, {confirm, pushMessage })(SmartUser)
@@ -81,7 +68,15 @@ const User = ({fieldFor, confirm, pushMessage,injectActionHeader, ...otherProps}
         const ConnectedUserForm = compose(
             connectToMetadata(['user']),
             connectToForm(formConfig),
-            connectToFieldHelpers()
+            connectToFieldHelpers(),
+            connectToHeader({
+                actions: {primary: [{action: () => console.log('Primaire'), label: 'Primaire', icon: 'home'}], secondary: [{action: () => console.log('secondary'), label: 'Secondaire', icon: 'home'}]},
+                ExpandedHeaderComponent: ExpandedUserHeader,
+                SummaryHeaderComponent: SummaryUserHeader,
+                LeftHeaderComponent: () => (<div>Left</div>),
+                RightHeaderComponent: () => (<div>Right</div>),
+                //triggerPosition: 0
+            })
         )(
             /*
             fake tricks to extract dispatch into the props.
