@@ -75,7 +75,7 @@ const User = ({fieldFor, confirm, pushMessage,injectActionHeader, ...otherProps}
                 SummaryHeaderComponent: SummaryUserHeader,
                 LeftHeaderComponent: () => (<div>Left</div>),
                 RightHeaderComponent: () => (<div>Right</div>),
-                //triggerPosition: 0
+                //triggerScrollPosition: 0
             })
         )(
             /*
