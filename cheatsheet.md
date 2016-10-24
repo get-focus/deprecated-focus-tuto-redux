@@ -8,6 +8,10 @@ const MonComposant = React.createClass(...)
 // Quand j'ai besoin du state
 class MonComposant extends React.Component{}
 
+// Quand j'ai besoin d'une méthode du cycle de vie
+// Quand j'ai PAS besoin de state
+class MonComposant extends React.PureComponent{}
+
 // Quand je fais un composant pure (presque tout le temps)
 // Attention pas de state :+1
 function MonComposant(props){...}
@@ -20,6 +24,7 @@ function MonComposant(props){...}
 - [connectToFieldHelpers]()
 - [connectToMasterData]()
 - [connectToRedux]()
+- [connectToSearch]()
 
 > Ne pas hésiter à faire des
 > HoC projets si plusieurs pages pareilles
@@ -102,7 +107,9 @@ _Page => action load (load1+2 et load3)
 - [displayFor](https://github.com/get-focus/focus-tuto-redux/blob/master/README.md#la-vue)
 - [selectFor](https://github.com/get-focus/focus-tuto-redux/blob/master/README.md#les-listes-de-ref%C3%A9rences)
 - [listFor](https://github.com/get-focus/focus-tuto-redux/blob/master/README.md#les-listes)
-- [fieldForLine](https://github.com/get-focus/focus-tuto-redux/blob/master/README.md#les-listes)
+    -   [fieldForLine](https://github.com/get-focus/focus-tuto-redux/blob/master/README.md#les-listes)
+    -   [textForLine](https://github.com/get-focus/focus-tuto-redux/blob/master/README.md#les-listes)
+    -   [selectForLine](https://github.com/get-focus/focus-tuto-redux/blob/master/README.md#les-listes)
 
 ```jsx
 const User = ({fieldFor,listFor,selectFor  ...otherProps}) => (
