@@ -7,8 +7,7 @@ import InputText from 'focus-components/input-text'
 import InputSelect from 'focus-components/select'
 
 export const DO_ID = {
-    type: 'text',
-    InputComponent: props => <div>fndssn</div>
+    type: 'text'
     //InputComponent: (props) => <div>DO_ID {JSON.stringify(props)}</div>
 }
 

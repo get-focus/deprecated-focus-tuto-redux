@@ -19,7 +19,7 @@ const User = ({fieldFor, confirm, pushMessage,injectActionHeader, ...otherProps}
     <div>
         Bien le bonjour
         <Panel title='User' {...otherProps}>
-            {fieldFor('uuid', {entityPath: 'user', options: {InputComponent: props => <div>Looooool</div>}})}
+            {fieldFor('uuid', {editing: false})}
             {fieldFor('firstName', {entityPath: 'user'})}
             {fieldFor('lastName', {entityPath: 'user'})}
             <button onClick={ () => confirm('Amelie :pikax: Thomas', {

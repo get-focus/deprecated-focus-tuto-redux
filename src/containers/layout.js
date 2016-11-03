@@ -40,11 +40,15 @@ const AppMessages = props => <MessageCenter {...props} MessageComponent={SB} />
 const StateDisplayer = connectToStore(s => s)(props => <pre><code>{JSON.stringify(props, null, 4)}</code></pre>)
 const AppHeader = props => <Header {...props} ContentActionsComponent={ContentActionsComponent} />
 
+function MenuTuto() {
+    return <MenuLeft menus={[{icon:'home', route: '/', label: 'home'}]} />
+}
+
 //confirmation-popin
 function AppLayout(props) {
     return  (
         <ConnectedScrollTrigger>
-            <Layout AppHeader={AppHeader} LoadingBar={LoadingBar} ConfirmWrapper={ConfirmComponent} Menu={MenuLeft} MessageCenter={AppMessages}>
+            <Layout AppHeader={AppHeader} LoadingBar={LoadingBar} ConfirmWrapper={ConfirmComponent} Menu={MenuTuto} MessageCenter={AppMessages}>
                 {props.hasDevtools  && <DevTools />}
                 <h1>Bienvenue dans ce superbe tutoriel dd{props.name} </h1>
                 {/* On récupère les définitions dans les props*/}
