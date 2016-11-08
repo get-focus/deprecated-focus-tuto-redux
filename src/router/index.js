@@ -8,7 +8,8 @@ import UserList from '../views/user/user-form-list';
 import User from '../views/user/user-form';
 import UserFinance from '../views/user/user-finance-form';
 import UserSelect from '../views/user/user-form-select-checkbox';
-import UserTest from '../views/user/user-test-clean-action'
+import UserTest from '../views/user/user-test-clean-action';
+import Messages from '../views/messages';
 
 import {hashHistory } from 'react-router';
 const paramExtractor = Component => props => <Component id={props.params.id} />
@@ -27,7 +28,7 @@ const router = <Router history={hashHistory}  key='router'>
     <Route path='user/list/:id' component={UserListWithParam} />
     <Route path='user/select/:id' component={UserSelectWithParam} />
     <Route path='user/test/:id' component={UserTestWithParam} />
-
+    <Route path='messages' component={Messages} />
   </Route>
 </Router>;
 
