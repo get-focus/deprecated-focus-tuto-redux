@@ -1,13 +1,14 @@
 import 'babel-polyfill';
 import 'focus-components/style';
 import 'focus-graph/src/style/field.scss';
-import 'focus-application/layout/index.scss'
-import 'focus-application/header/index.scss'
-import {init as initTranslation} from 'focus-components/translation';
+import 'focus-application/style';
 
+import i18next from 'i18next';
 //------------------------------
 // INIT FOCUS TRANSLATION
-initTranslation();
+import {intializeTranslation} from 'focus-application/translation';
+import componentsFr from 'focus-components/translation/resources/fr-FR';
+intializeTranslation(i18next, 'fr-FR', [componentsFr]);
 //------------------------------
 
 import React , {PropTypes} from 'react';

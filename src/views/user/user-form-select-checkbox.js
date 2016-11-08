@@ -12,7 +12,7 @@ import compose from 'lodash/flowRight';
 
 class UserForm extends Component {
     componentWillMount() {
-        const {id, load, loadMasterData} = this.props;
+        const {id, load, loadMasterData, toggleEdit} = this.props;
         load({id});
         loadMasterData();
     }

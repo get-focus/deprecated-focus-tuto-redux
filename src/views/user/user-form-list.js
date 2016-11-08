@@ -12,20 +12,20 @@ import FinancialMoveLine from './financialMoveLine'
 import ScrollSpyContainer from 'focus-components/scrollspy-container'
 
 const User = ({fieldFor,listFor, rawInputValue, victoire, echec,  ...otherProps}) => (
-  <Panel title={victoire ? "User " +victoire : "User " +echec} {...otherProps}>
-      {fieldFor('name', {entityPath: 'finance'})}
-      {fieldFor('amount', {entityPath: 'finance'})}
-      {fieldFor('date', {entityPath: 'finance'})}
-      {fieldFor('test', {entityPath: 'finance'})}
-  </Panel>
+    <Panel title={victoire ? "User " +victoire : "User " +echec} {...otherProps}>
+        {fieldFor('name', {entityPath: 'finance'})}
+        {fieldFor('amount', {entityPath: 'finance'})}
+        {fieldFor('date', {entityPath: 'finance'})}
+        {fieldFor('test', {entityPath: 'finance'})}
+    </Panel>
 )
 
 const selectData = name => (state ={}) => {
-  if( !state.customData[name]) {
-    console.warn(`SELECT_DATA : there is no ${name} in the dataset of the state`)
-    return state.customData;
-  }
-  return state.dataset[name]
+    if( !state.customData[name]) {
+        console.warn(`SELECT_DATA : there is no ${name} in the dataset of the state`)
+        return state.customData;
+    }
+    return state.dataset[name]
 }
 
 class SmartUser extends Component {
@@ -38,10 +38,9 @@ class SmartUser extends Component {
     render() {
         const {fieldFor, list} = this.props;
         return (
-          <ScrollSpyContainer>
-            <User fieldFor={fieldFor} listFor={list} { ...this.props}/>
-            <User fieldFor={fieldFor} listFor={list} { ...this.props}/>
-          </ScrollSpyContainer>
+            <ScrollSpyContainer>
+                <User fieldFor={fieldFor} listFor={list} { ...this.props}/>
+            </ScrollSpyContainer>
         );
     }
 };
